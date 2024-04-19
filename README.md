@@ -1,2 +1,2 @@
 # SyntaxSoup
-GameJam 11 by hosted [3m5.](https://www.3m5.de/karriere/3m5gamejam)
+GameJam 11 hosted by [3m5.](https://www.3m5.de/karriere/3m5gamejam)
