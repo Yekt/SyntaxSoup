@@ -19,3 +19,5 @@ build/windows/*
 !build/windows/.gitkeep
 build/linux/*
 !build/linux/.gitkeep
+build/web/*
+!build/web/.gitkeep
