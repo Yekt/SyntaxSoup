@@ -1,9 +1,9 @@
 extends Area2D
 
 
-var DAMAGE = 1
-var SPEED = 1000
-var DRAWN = false
+@export var DAMAGE = 1
+@export var SPEED = 1000
+@export var DRAWN = false
 
 
 func _physics_process(delta):
