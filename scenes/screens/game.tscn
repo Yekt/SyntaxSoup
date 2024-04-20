@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://c8uv5b4yxfsys"]
+
+[ext_resource type="Script" path="res://scenes/screens/game.gd" id="1_v10s8"]
+[ext_resource type="PackedScene" uid="uid://dispcdksyboha" path="res://scenes/entities/attacker.tscn" id="2_5qbvn"]
+[ext_resource type="PackedScene" uid="uid://bhhktlh1a1cui" path="res://scenes/entities/supporter.tscn" id="3_b0be5"]
+[ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="4_b3dwb"]
+
+[node name="Game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_v10s8")
+
+[node name="Attacker" parent="." instance=ExtResource("2_5qbvn")]
+position = Vector2(312, 308)
+
+[node name="Supporter" parent="." instance=ExtResource("3_b0be5")]
+position = Vector2(881, 317)
+
+[node name="background" parent="." instance=ExtResource("4_b3dwb")]
+z_index = -1

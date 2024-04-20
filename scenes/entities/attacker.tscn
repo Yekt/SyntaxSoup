@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://dispcdksyboha"]
+
+[ext_resource type="Script" path="res://scenes/entities/attacker.gd" id="1_5n3m0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_08lvl"]
+radius = 20.0
+
+[node name="Attacker" type="CharacterBody2D"]
+platform_floor_layers = 4294901760
+script = ExtResource("1_5n3m0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(0.305882, 1, 1, 1)
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+unique_name_in_owner = true
+shape = SubResource("CircleShape2D_08lvl")
+
+[node name="Blaster1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-20, -20)
+
+[node name="Blaster2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-20, 20)
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="shoot"]
