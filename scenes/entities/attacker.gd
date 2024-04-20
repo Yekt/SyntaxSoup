@@ -1,7 +1,6 @@
 extends CharacterBody2D
 
 
-var GLOBALS
 const PROJECTILE = preload("res://scenes/entities/projectile.tscn")
 
 
@@ -15,12 +14,11 @@ var BLASTER1 = true
 
 
 func _ready():
-	GLOBALS = get_node("/root/Globals")
 	%AttackTimer.wait_time = ATTACK_SPEED
 
 func _physics_process(delta):
 	var direction = Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
-	velocity = direction * MOVEMENT_SPEED * GLOBALS.SPEED_SCALE
+	velocity = direction * MOVEMENT_SPEED
 	move_and_slide()
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
