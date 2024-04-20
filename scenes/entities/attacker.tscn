@@ -1,20 +1,128 @@
-[gd_scene load_steps=3 format=3 uid="uid://dispcdksyboha"]
+[gd_scene load_steps=20 format=3 uid="uid://dispcdksyboha"]
 
 [ext_resource type="Script" path="res://scenes/entities/attacker.gd" id="1_5n3m0"]
+[ext_resource type="Texture2D" uid="uid://dsvog4sdetuq3" path="res://scenes/textures/Engine.png" id="2_i4ypy"]
+[ext_resource type="Texture2D" uid="uid://d1e1fb08jt4fb" path="res://scenes/textures/Ship.png" id="3_g2t45"]
+[ext_resource type="Texture2D" uid="uid://dgr7b06nbc6cx" path="res://scenes/textures/Autocannon.png" id="4_46an0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08lvl"]
 radius = 20.0
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_v753h"]
+atlas = ExtResource("2_i4ypy")
+region = Rect2(0, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ewvd"]
+atlas = ExtResource("2_i4ypy")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojktl"]
+atlas = ExtResource("2_i4ypy")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urbgy"]
+atlas = ExtResource("2_i4ypy")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dihjy"]
+atlas = ExtResource("2_i4ypy")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnp5j"]
+atlas = ExtResource("2_i4ypy")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ewujq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v753h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ewvd")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojktl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urbgy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dihjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnp5j")
+}],
+"loop": true,
+"name": &"running",
+"speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yf0qs"]
+atlas = ExtResource("4_46an0")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2c17w"]
+atlas = ExtResource("4_46an0")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2kdk2"]
+atlas = ExtResource("4_46an0")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s801g"]
+atlas = ExtResource("4_46an0")
+region = Rect2(192, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3mlhj"]
+atlas = ExtResource("4_46an0")
+region = Rect2(240, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h4x8"]
+atlas = ExtResource("4_46an0")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6l2ix"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yf0qs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2c17w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2kdk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s801g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3mlhj")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8h4x8")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [node name="Attacker" type="CharacterBody2D"]
+rotation = -1.5708
+scale = Vector2(3, 3)
 platform_floor_layers = 4294901760
 script = ExtResource("1_5n3m0")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-color = Color(0.305882, 1, 1, 1)
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
@@ -22,14 +130,32 @@ shape = SubResource("CircleShape2D_08lvl")
 
 [node name="Blaster1" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-20, -20)
+position = Vector2(-9, -8)
 
 [node name="Blaster2" type="Marker2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-20, 20)
+position = Vector2(9, -8)
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+wait_time = 0.25
 autostart = true
+
+[node name="EngineAnimation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_ewujq")
+animation = &"running"
+
+[node name="ShipSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("3_g2t45")
+
+[node name="GunAnimation" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_6l2ix")
+animation = &"firing"
+autoplay = "firing"
+frame = 1
+frame_progress = 0.472109
 
 [connection signal="timeout" from="AttackTimer" to="." method="shoot"]

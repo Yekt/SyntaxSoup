@@ -18,7 +18,6 @@ func _ready():
 	GLOBALS = get_node("/root/Globals")
 	%AttackTimer.wait_time = ATTACK_SPEED
 
-
 func _physics_process(delta):
 	var direction = Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
 	velocity = direction * MOVEMENT_SPEED * GLOBALS.SPEED_SCALE
@@ -26,8 +25,12 @@ func _physics_process(delta):
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
-	
-	
+
+	if direction.length() > 0.1:
+		$EngineAnimation.play("running")
+	else:
+		$EngineAnimation.play("idle")
+
 func shoot():
 	var projectile = PROJECTILE.instantiate()
 	if BLASTER1:
