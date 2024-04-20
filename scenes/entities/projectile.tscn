@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bw8gxbeyjunoh"]
+
+[ext_resource type="Script" path="res://scenes/entities/projectile.gd" id="1_ds5kl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e66py"]
+radius = 5.0
+
+[node name="Projectile" type="Area2D"]
+script = ExtResource("1_ds5kl")
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_e66py")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+color = Color(0.830429, 0.288449, 0, 1)
+
+[node name="OnScreenChecker" type="VisibleOnScreenNotifier2D" parent="."]
+unique_name_in_owner = true
+scale = Vector2(0.6, 0.6)
+
+[connection signal="screen_exited" from="OnScreenChecker" to="." method="on_screen_exited"]
