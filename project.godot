@@ -19,6 +19,13 @@ config/icon="res://icon.svg"
 
 Globals="*res://globals.gd"
 
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [input]
 
 attacker_up={
@@ -69,7 +76,3 @@ supporter_right={
 , Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":-1,"axis":2,"axis_value":1.0,"script":null)
 ]
 }
-
-[rendering]
-
-renderer/rendering_method="mobile"
