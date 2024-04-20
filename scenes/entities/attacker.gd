@@ -12,14 +12,16 @@ var SHIELD = 100
 var SHIELD_REGEN_PER_S = 10
 var BLASTER1 = true
 
+
 func hit(damage):
-	HIT_POINTS = HIT_POINTS - damage
-	if HIT_POINTS < 0:
+	HIT_POINTS -= damage
+	if HIT_POINTS <= 0:
 		get_tree().change_scene_to_file("res://scenes/screens/game_over.tscn")
 
 
 func _ready():
 	%AttackTimer.wait_time = ATTACK_SPEED
+
 
 func _physics_process(delta):
 	var direction = Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
@@ -34,6 +36,7 @@ func _physics_process(delta):
 		$EngineAnimation.play("running")
 	else:
 		$EngineAnimation.play("idle")
+
 
 func shoot():
 	var projectile = PROJECTILE.instantiate()
