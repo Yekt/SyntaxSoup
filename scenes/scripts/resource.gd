@@ -7,8 +7,8 @@ var textures = [
 	preload("res://scenes/textures/Minerals/Icon31.png"),
 ]
 
-var rot_speed = 0
 var velocity: Vector2
+var rot_speed = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -19,5 +19,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position += velocity * delta
+	move_and_collide(velocity)
 	rotate(rot_speed * delta)
+
+func on_screen_exited():
+	queue_free()

@@ -68,7 +68,7 @@ func spawn_children():
 		if SIZE == SMALL:
 			var child = RESOURCE.instantiate()
 			child.position = position
-			child.velocity = DIRECTION * SPEED * 0.5
+			child.velocity = DIRECTION * SPEED * 0.01
 			get_parent().add_child(child)
 		else:
 			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-0.8, 0.8)))
