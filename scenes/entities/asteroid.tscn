@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bihig0xjf0ijw"]
+
+[ext_resource type="Script" path="res://scenes/entities/asteroid.gd" id="1_54xc3"]
+[ext_resource type="Texture2D" uid="uid://cvs5gpbf3y44s" path="res://resources/meteorite-clipart-md-2948215603.png" id="2_wjemx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okb2a"]
+radius = 201.4
+
+[node name="Asteroid" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_54xc3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_okb2a")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_wjemx")
