@@ -9,6 +9,9 @@ var SHIELD_REGEN_PER_S = 10
 
 func hit(damage):
 	HIT_POINTS = HIT_POINTS - damage
+	if HIT_POINTS < 0:
+		get_tree().change_scene_to_file("res://scenes/screens/game_over.tscn")
+
 
 func _physics_process(delta):
 	var direction = Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
@@ -21,7 +24,8 @@ func _physics_process(delta):
 			r.queue_free()
 			r.set_collision_layer_value(2, false)
 			print("resource collected")
-
+			
+	
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
