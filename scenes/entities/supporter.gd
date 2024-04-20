@@ -7,6 +7,8 @@ var HP_REGEN_PER_S = 1
 var SHIELD = 100
 var SHIELD_REGEN_PER_S = 10
 
+func hit(damage):
+	HIT_POINTS = HIT_POINTS - damage
 
 func _physics_process(delta):
 	var direction = Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")

@@ -12,6 +12,8 @@ var SHIELD = 100
 var SHIELD_REGEN_PER_S = 10
 var BLASTER1 = true
 
+func hit(damage):
+	HIT_POINTS = HIT_POINTS - damage
 
 func _ready():
 	%AttackTimer.wait_time = ATTACK_SPEED

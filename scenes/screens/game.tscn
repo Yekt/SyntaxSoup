@@ -559,7 +559,9 @@ y_sort_enabled = true
 script = ExtResource("1_v10s8")
 
 [node name="Attacker" parent="." instance=ExtResource("2_5qbvn")]
-position = Vector2(482, 525)
+
+position = Vector2(378, 302)
+
 
 [node name="Supporter" parent="." instance=ExtResource("3_b0be5")]
 position = Vector2(1506, 530)
