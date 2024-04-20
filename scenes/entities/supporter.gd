@@ -6,9 +6,13 @@ var HIT_POINTS = 100
 var HP_REGEN_PER_S = 1
 var SHIELD = 100
 var SHIELD_REGEN_PER_S = 10
+var GLOBALS
 
 func hit(damage):
 	HIT_POINTS = HIT_POINTS - damage
+
+func _ready():
+	GLOBALS = get_node("/root/Globals")
 
 func _physics_process(delta):
 	var direction = Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
@@ -20,7 +24,7 @@ func _physics_process(delta):
 			if other.get_collision_layer_value(2):
 				other.queue_free()
 				other.set_collision_layer_value(2, false)
-				print("resource collected")
+				GLOBALS.add_score(1)
 
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
