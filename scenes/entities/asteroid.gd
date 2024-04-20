@@ -15,6 +15,7 @@ var DIRECTION
 var SPEED
 var HEALTH
 var CHILDREN_COUNT
+var IS_DESTROYED = false
 var ROTATION
 
 
@@ -56,6 +57,11 @@ func _process(delta):
 	position = position + DIRECTION * SPEED * delta
 	rotate(ROTATION)
 
+	if IS_DESTROYED:
+		if !$Sprite.is_playing():
+			queue_free()
+		return
+
 
 func spawn_children():
 	for i in CHILDREN_COUNT:
@@ -74,7 +80,8 @@ func hit(damage):
 	HEALTH -= damage
 	if HEALTH <= 0:
 		spawn_children()
-		queue_free()
+		IS_DESTROYED = true
+		$Sprite.play("default")
 
 
 func on_screen_exited():
