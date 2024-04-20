@@ -4,7 +4,6 @@ extends Node2D
 
 
 var GLOBALS
-#var ASTEROID = preload("res://scenes/entities/asteroid.tscn")
 
 
 func _ready():
@@ -20,11 +19,11 @@ func spawn_asteroid():
 	var rng = randf()
 	var asteroid
 	if (rng <= 0.5):
-		asteroid = Asteroid.create_asteroid(0, Vector2.RIGHT)
+		asteroid = Asteroid.create_asteroid(0, Vector2.RIGHT + Vector2(0, randf_range(-0.1, 0.1)))
 	elif (rng <= 0.8333):
-		asteroid = Asteroid.create_asteroid(1, Vector2.RIGHT)
+		asteroid = Asteroid.create_asteroid(1, Vector2.RIGHT + Vector2(0, randf_range(-0.1, 0.1)))
 	else:
-		asteroid = Asteroid.create_asteroid(2, Vector2.RIGHT)
+		asteroid = Asteroid.create_asteroid(2, Vector2.RIGHT + Vector2(0, randf_range(-0.1, 0.1)))
 	asteroid.global_position = %SpawnPoint.global_position
 	add_child(asteroid)
 	
