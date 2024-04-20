@@ -19,3 +19,17 @@ color = Color(0.305882, 1, 1, 1)
 [node name="HitBox" type="CollisionShape2D" parent="."]
 unique_name_in_owner = true
 shape = SubResource("CircleShape2D_08lvl")
+
+[node name="Blaster1" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-20, -20)
+
+[node name="Blaster2" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(-20, 20)
+
+[node name="AttackTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+autostart = true
+
+[connection signal="timeout" from="AttackTimer" to="." method="shoot"]
