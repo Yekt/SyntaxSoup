@@ -1,11 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://cun4xxwv2j3vl"]
+[gd_scene load_steps=3 format=3 uid="uid://sjc6d5drvmho"]
 
-[ext_resource type="PackedScene" uid="uid://bihig0xjf0ijw" path="res://scenes/entities/asteroid.tscn" id="1_x2luw"]
-[ext_resource type="PackedScene" uid="uid://bdxaexvfsgxt3" path="res://scenes/entities/asteroid_small.tscn" id="2_vw5y4"]
+[ext_resource type="PackedScene" path="res://scenes/entities/asteroid.tscn" id="1_x2luw"]
+[ext_resource type="PackedScene" uid="uid://5pahtvvew3y1" path="res://scenes/entities/asteroid_small.tscn" id="2_vw5y4"]
 
 [node name="AsteroidMedium" type="Node2D"]
 
 [node name="Asteroid" parent="." instance=ExtResource("1_x2luw")]
-speed = 2
-health = 50
+scale = Vector2(0.3, 0.3)
+speed = 6
+health = 2
 to_spawn = Array[PackedScene]([ExtResource("2_vw5y4"), ExtResource("2_vw5y4"), ExtResource("2_vw5y4")])

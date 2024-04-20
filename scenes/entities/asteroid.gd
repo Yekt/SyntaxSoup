@@ -14,13 +14,14 @@ func spawn_children():
 		var entity = child.instantiate()
 		entity.position = self.position
 		get_parent().add_child(entity)
+		#entity.velocity = Vector2(randi() % 100, randi() % 100) * speed
 
 func hit(damage):
 	health = health - damage
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	velocity = Vector2(randi() % 100, randi() % 100) * speed
+	velocity = Vector2(1,0) * 500
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
