@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cun4xxwv2j3vl"]
+
+[ext_resource type="PackedScene" uid="uid://bihig0xjf0ijw" path="res://scenes/entities/asteroid.tscn" id="1_x2luw"]
+[ext_resource type="PackedScene" uid="uid://bdxaexvfsgxt3" path="res://scenes/entities/asteroid_small.tscn" id="2_vw5y4"]
+
+[node name="AsteroidMedium" type="Node"]
+
+[node name="Asteroid" parent="." instance=ExtResource("1_x2luw")]
+speed = 50
+health = 50
+to_spawn = Array[PackedScene]([ExtResource("2_vw5y4"), ExtResource("2_vw5y4"), ExtResource("2_vw5y4")])
