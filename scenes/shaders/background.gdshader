@@ -48,19 +48,23 @@ vec3 hsv2rgb(vec3 c) {
 vec3 star(vec2 uv) {
 	vec2 tile_pos = round((uv) * 5.0) / 5.0;
 	vec2 star_pos = tile_pos + random(tile_pos * 10.0) * 0.06;
-	float star_dist = pow(distance(star_pos, uv), 0.5);
-	return hsv2rgb(vec3(noise(tile_pos), 0.2, 1.0)) * smoothstep(0.1, 0.0, star_dist);
+	vec2 delta = abs(star_pos - uv);
+	float star_cross = smoothstep(0.01, 0.0, min(delta.x * 2.0, delta.y));
+	float star_radius = smoothstep(0.02, 0.0, distance(star_pos, uv));
+	float s = star_cross * star_radius;
+	return hsv2rgb(vec3(noise(tile_pos), 0.2, 1.0)) * s;
 }
 
 vec3 background(vec2 uv, vec2 d) {
 	vec2 offset = d * speed;
 	vec3 dust1 = vec3(0.1, 0.15, 0.25) * fractal_noise((uv + offset) * 12.0, 4, 0.0);
 	vec3 dust2 = vec3(0.15, 0.0, 0.0) * fractal_noise((uv + offset * 2.0) * 8.0 + vec2(3.0, 4.0), 4, 0.0);
+	vec3 dust3 = vec3(0.03, 0.05, 0.02) * fractal_noise((uv + offset * 1.5) * 6.0 + vec2(2.0, 6.0), 4, 0.0);
 
 	vec3 star1 = star(uv + offset);
 	vec3 star2 = star(uv + offset + vec2(1.0, 2.0));
 
-	return dust1 + dust2 + star1 + star2;
+	return dust1 + dust2 + dust3 + star1 + star2;
 }
 
 void vertex() {}
