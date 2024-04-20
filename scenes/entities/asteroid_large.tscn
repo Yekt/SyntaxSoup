@@ -7,6 +7,6 @@
 
 [node name="Asteroid" parent="." instance=ExtResource("1_cwjfe")]
 scale = Vector2(2, 2)
-speed = 0
-health = -1
+speed = 25
+health = 100
 to_spawn = Array[PackedScene]([ExtResource("2_pchp4"), ExtResource("2_pchp4"), ExtResource("2_pchp4")])
