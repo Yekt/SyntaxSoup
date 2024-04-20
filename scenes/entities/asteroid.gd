@@ -6,6 +6,7 @@ const LARGE = 2
 const MEDIUM = 1
 const SMALL = 0
 const ASTEROID = preload("res://scenes/entities/asteroid.tscn")
+const RESOURCE = preload("res://scenes/entities/resource.tscn")
 var GLOBALS
 
 
@@ -26,7 +27,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.SIZE = SMALL
 		asteroid.SPEED = 600 * speed_randomizer
 		asteroid.HEALTH = 2
-		asteroid.CHILDREN_COUNT = 0
+		asteroid.CHILDREN_COUNT = 3
 		asteroid.ROTATION = randf_range(-0.1, 0.1)
 	elif (size == MEDIUM):
 		asteroid.scale = Vector2(0.4, 0.4)
@@ -58,9 +59,15 @@ func _process(delta):
 
 func spawn_children():
 	for i in CHILDREN_COUNT:
-		var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-0.8, 0.8)))
-		child.position = self.position
-		get_parent().add_child(child)
+		if SIZE == SMALL:
+			var child = RESOURCE.instantiate()
+			child.position = position
+			child.velocity = DIRECTION * SPEED * 0.5
+			get_parent().add_child(child)
+		else:
+			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-0.8, 0.8)))
+			child.position = position
+			get_parent().add_child(child)
 
 
 func hit(damage):

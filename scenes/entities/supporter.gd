@@ -16,11 +16,11 @@ func _physics_process(delta):
 	move_and_slide()
 	for i in get_slide_collision_count():
 		var other = get_slide_collision(i).get_collider()
-		if other.name == "Resource":
-			var r = other as RigidBody2D
-			r.queue_free()
-			r.set_collision_layer_value(2, false)
-			print("resource collected")
+		if other is RigidBody2D:
+			if other.get_collision_layer_value(2):
+				other.queue_free()
+				other.set_collision_layer_value(2, false)
+				print("resource collected")
 
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
