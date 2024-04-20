@@ -1,10 +1,11 @@
-[gd_scene load_steps=84 format=3 uid="uid://c8uv5b4yxfsys"]
+[gd_scene load_steps=85 format=3 uid="uid://c8uv5b4yxfsys"]
 
 [ext_resource type="Script" path="res://scenes/screens/game.gd" id="1_v10s8"]
 [ext_resource type="PackedScene" uid="uid://dispcdksyboha" path="res://scenes/entities/attacker.tscn" id="2_5qbvn"]
 [ext_resource type="PackedScene" uid="uid://bhhktlh1a1cui" path="res://scenes/entities/supporter.tscn" id="3_b0be5"]
 [ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="4_b3dwb"]
 [ext_resource type="Texture2D" uid="uid://dcqky2vqcsnr1" path="res://scenes/textures/Earth-Like planet - Without back glow.png" id="5_76sym"]
+[ext_resource type="PackedScene" uid="uid://csmswurf7oith" path="res://scenes/entities/resource.tscn" id="6_nwffi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_amgl6"]
 atlas = ExtResource("5_76sym")
@@ -568,7 +569,10 @@ z_index = -1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 5
-position = Vector2(1151, 309)
+position = Vector2(1797, 143)
 scale = Vector2(4.129, 4)
 sprite_frames = SubResource("SpriteFrames_1v0qu")
 autoplay = "default"
+
+[node name="Resource" parent="." instance=ExtResource("6_nwffi")]
+position = Vector2(753, 318)
