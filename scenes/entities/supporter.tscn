@@ -167,6 +167,7 @@ animations = [{
 [node name="Supporter" type="CharacterBody2D"]
 rotation = -1.5708
 scale = Vector2(3, 3)
+collision_layer = 4
 platform_floor_layers = 4294901760
 script = ExtResource("1_xc7d7")
 

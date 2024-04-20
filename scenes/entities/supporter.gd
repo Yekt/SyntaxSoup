@@ -10,6 +10,8 @@ var HP_REGEN_PER_S = 1
 var SHIELD = 100
 var SHIELD_REGEN_PER_S = 10
 
+func hit(damage):
+	HIT_POINTS = HIT_POINTS - damage
 
 func _ready():
 	GLOBALS = get_node("/root/Globals")
