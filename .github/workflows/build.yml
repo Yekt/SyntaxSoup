@@ -23,6 +23,10 @@ jobs:
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_SYNTAX_SOUP }}'
           projectId: syntax-soup
           channelId: live
+        run: ls
+        run: pwd
+        run: ls ./build
+        run: ls ./build/web
       - name: Export Artifacts
         uses: actions/upload-artifact@v4
         with:
