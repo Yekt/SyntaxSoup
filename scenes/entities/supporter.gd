@@ -11,14 +11,18 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	update_values()
 
-	$"/root/Game/Hud/HudHealthRight".frame = floor((float(health) / float(max_health + 1)) * 5)
-	$"/root/Game/Hud/HudShieldRight".frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
+	$HealthHud.frame = floor((float(health) / float(max_health + 1)) * 5)
+	$ShieldHud.frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
 
 	for other in $PickupArea.get_overlapping_areas():
 		other.queue_free()
 		other.set_collision_layer_value(2, false)
 		globals.add_score(1)
 		$AudioStreamPlayer2D.play()
+		$"/root/Game/EnergyLink".brightness = 2.0
+
+		$"/root/Game/Attacker/Shield".energy += globals.ENERGY_CONVERSION
+		$Shield.energy += globals.ENERGY_CONVERSION
 
 	if Input.is_action_pressed("supporter_magnet"):
 		for other in $MagnetArea.get_overlapping_areas():
