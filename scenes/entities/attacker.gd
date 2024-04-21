@@ -12,6 +12,11 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	$ShipSprite.frame = 3 - floor((float(health) / float(max_health + 1)) * 4)
 
+	if get_input_direction().length() > 0.1:
+		$EngineAnimation.play("running")
+	else:
+		$EngineAnimation.play("idle")
+
 func get_input_direction():
 	return Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
 
