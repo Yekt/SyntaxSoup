@@ -1,5 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dby2nq1eahwv8"]
+[gd_scene load_steps=5 format=3 uid="uid://dby2nq1eahwv8"]
 
+[ext_resource type="Theme" uid="uid://bwvkxk7ybstes" path="res://scenes/theme/theme.tres" id="1_hu31w"]
 [ext_resource type="Script" path="res://scenes/scripts/game_over.gd" id="1_yqeok"]
 [ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="3_pt83h"]
 
@@ -12,6 +13,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hu31w")
 script = ExtResource("1_yqeok")
 
 [node name="background" parent="." instance=ExtResource("3_pt83h")]
