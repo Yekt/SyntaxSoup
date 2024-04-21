@@ -6,6 +6,9 @@ extends Area2D
 @export var DRAWN = false
 
 
+func _ready():
+	$AnimatedSprite2D.play('default')
+
 func _physics_process(delta):
 	var direction = Vector2.LEFT
 
