@@ -1,8 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://pra3mls2eebx"]
+[gd_scene load_steps=22 format=3 uid="uid://pra3mls2eebx"]
 
 [ext_resource type="Script" path="res://scenes/scripts/shield.gd" id="1_k3w1v"]
 [ext_resource type="Shader" path="res://scenes/shaders/shield.gdshader" id="1_vy5so"]
 [ext_resource type="Texture2D" uid="uid://clwltqptuavwx" path="res://scenes/textures/Main Ship - Shields - Round Shield.png" id="2_vjyv5"]
+[ext_resource type="Shader" path="res://scenes/shaders/shield_burst.gdshader" id="4_keuh5"]
+[ext_resource type="Texture2D" uid="uid://dc6bc1hs54vs0" path="res://icon.svg" id="5_uajt8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5mdov"]
 radius = 25.0
@@ -102,6 +104,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bh312"]
+shader = ExtResource("4_keuh5")
+shader_parameter/time = null
+
 [node name="Shield" type="Area2D"]
 collision_layer = 0
 collision_mask = 8
@@ -116,3 +122,8 @@ texture_filter = 1
 material = SubResource("ShaderMaterial_vx8tc")
 sprite_frames = SubResource("SpriteFrames_gsbys")
 autoplay = "default"
+
+[node name="BurstSprite" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_bh312")
+scale = Vector2(5, 5)
+texture = ExtResource("5_uajt8")
