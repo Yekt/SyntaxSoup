@@ -2,7 +2,7 @@ extends Area2D
 
 var max_shield = 100
 var energy = max_shield
-var shield_regen = 20
+var shield_regen = 0
 var cooldown = 2
 var cooldown_timer = 1000
 var is_bursting = false

@@ -21,6 +21,9 @@ func _physics_process(delta):
 		$AudioStreamPlayer2D.play()
 		$"/root/Game/EnergyLink".brightness = 2.0
 
+		$"/root/Game/Attacker/Shield".energy += globals.ENERGY_CONVERSION
+		$Shield.energy += globals.ENERGY_CONVERSION
+
 	if Input.is_action_pressed("supporter_magnet"):
 		for other in $MagnetArea.get_overlapping_areas():
 			var speed = other.velocity.length()

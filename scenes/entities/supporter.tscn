@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/entities/supporter.gd" id="1_xc7d7"]
 [ext_resource type="Texture2D" uid="uid://2dq1mop2s5kb" path="res://scenes/textures/Kla'ed - Support ship - Base.png" id="2_tu6m5"]
 [ext_resource type="Texture2D" uid="uid://3fo3q7vaak2q" path="res://scenes/textures/Kla'ed - Support ship - Engine.png" id="3_wwhxi"]
-[ext_resource type="PackedScene" uid="uid://baq70ew6k7dow" path="res://scenes/entities/shield.tscn" id="5_cxd8x"]
+[ext_resource type="PackedScene" uid="uid://pra3mls2eebx" path="res://scenes/entities/shield.tscn" id="5_cxd8x"]
 [ext_resource type="AudioStream" uid="uid://bd3aa3ujnjxvv" path="res://scenes/sounds/Retro Event Acute 11.wav" id="5_iwmj1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxby1"]
