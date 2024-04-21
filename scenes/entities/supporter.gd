@@ -37,7 +37,7 @@ func _physics_process(delta):
 			var speed = other.velocity.length()
 			var dir = other.velocity.normalized()
 			var to_resource = (position - other.position).normalized()
-			dir = (dir + to_resource * magnet_strength * delta).normalized()
+			dir = (dir + to_resource * delta).normalized()
 			other.velocity = dir * speed
 			print(other.name)
 
@@ -48,7 +48,7 @@ func get_dodge_input():
 	return Input.is_action_pressed("supporter_dodge")
 
 func update_values():
-	magnet_strength = globals.MAGNET_LEVEL
+	$MagnetArea.scale = Vector2(1.0 + 0.5 * globals.MAGNET_LEVEL, 1.0 + 0.5 * globals.MAGNET_LEVEL)
 	$Shield.max_shield = 100 * globals.SHIELD_CAPACITY_LEVEL
 	$Shield.shield_regen = 20 * globals.SHIELD_RECHARGE_LEVEL
 	$Shield.burst_strength = 10 + globals.BURST_LEVEL * 2
