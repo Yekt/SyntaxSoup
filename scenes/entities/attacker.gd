@@ -47,3 +47,7 @@ func shoot():
 func update_values():
 	%AttackTimer.wait_time = 0.25 / globals.BLASTER_SPEED_LEVEL
 	damage = globals.BLASTER_DAMAGE_LEVEL
+	$Shield.max_shield = 100 * globals.SHIELD_CAPACITY_LEVEL
+	$Shield.shield_regen = 20 * globals.SHIELD_RECHARGE_LEVEL
+	$Shield.burst_strength = 10 + globals.BURST_LEVEL * 2
+	

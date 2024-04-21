@@ -5,9 +5,11 @@ var magnet_strength = 4
 
 func _ready():
 	globals = get_node("/root/Globals")
+	update_values()
 
 func _physics_process(delta):
 	super._physics_process(delta)
+	update_values()
 
 	$"/root/Game/Hud/HudHealthRight".frame = floor((float(health) / float(max_health + 1)) * 5)
 	$"/root/Game/Hud/HudShieldRight".frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
@@ -35,3 +37,7 @@ func get_dodge_input():
 
 func update_values():
 	magnet_strength = globals.MAGNET_LEVEL
+	$Shield.max_shield = 100 * globals.SHIELD_CAPACITY_LEVEL
+	$Shield.shield_regen = 20 * globals.SHIELD_RECHARGE_LEVEL
+	$Shield.burst_strength = 10 + globals.BURST_LEVEL * 2
+	
