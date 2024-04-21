@@ -23,12 +23,14 @@ func _physics_process(delta):
 
 	var direction = get_input_direction().normalized()
 
+	dodge_timer += delta
 	if is_dodgeing():
-		dodge_timer += delta
 		rotation = (dodge_timer / dodge_duration) * 2 * PI - PI / 2
 	elif get_dodge_input() and direction.length() > 0.1:
-		velocity = direction * movement_speed * 3
-		dodge_timer = 0
+		if $Shield.energy >= 10 and dodge_timer >= 1.0:
+			$Shield.energy -= 10
+			velocity = direction * movement_speed * 3
+			dodge_timer = 0
 	else:
 		velocity = direction * movement_speed
 		rotation = - PI / 2
