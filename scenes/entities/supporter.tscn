@@ -1,9 +1,13 @@
+
 [gd_scene load_steps=30 format=3 uid="uid://bhhktlh1a1cui"]
+
 
 [ext_resource type="Script" path="res://scenes/entities/supporter.gd" id="1_xc7d7"]
 [ext_resource type="Texture2D" uid="uid://2dq1mop2s5kb" path="res://scenes/textures/Kla'ed - Support ship - Base.png" id="2_tu6m5"]
 [ext_resource type="Texture2D" uid="uid://3fo3q7vaak2q" path="res://scenes/textures/Kla'ed - Support ship - Engine.png" id="3_wwhxi"]
-[ext_resource type="Texture2D" uid="uid://ctao7jurt4cuy" path="res://scenes/textures/Main Ship - Shields - Front Shield.png" id="4_s6e5y"]
+[ext_resource type="PackedScene" uid="uid://baq70ew6k7dow" path="res://scenes/entities/shield.tscn" id="5_cxd8x"]
+[ext_resource type="AudioStream" uid="uid://bd3aa3ujnjxvv" path="res://scenes/sounds/Retro Event Acute 11.wav" id="5_iwmj1"]
+
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xxby1"]
 radius = 20.0
@@ -211,3 +215,9 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MagnetArea"]
 shape = SubResource("CircleShape2D_ju8al")
+
+[node name="Shield" parent="." instance=ExtResource("5_cxd8x")]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_iwmj1")
+
