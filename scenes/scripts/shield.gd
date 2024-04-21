@@ -53,4 +53,6 @@ func burst():
 	
 	is_bursting = true
 	burst_timer = 0
+	$AudioStreamPlayer2D.play()
+	
 

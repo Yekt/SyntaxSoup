@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://06jl501kbs3e"]
+[gd_scene load_steps=14 format=3 uid="uid://06jl501kbs3e"]
 
 [ext_resource type="Texture2D" uid="uid://bnigs8tuvl3fq" path="res://scenes/textures/Asteroid.png" id="1_6ss3d"]
 [ext_resource type="Script" path="res://scenes/entities/asteroid.gd" id="1_l46c7"]
+[ext_resource type="AudioStream" uid="uid://dqgcwo3868kv7" path="res://scenes/sounds/Retro Explosion Short 15.wav" id="3_nba0u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_grrqi"]
 radius = 200.0
@@ -82,3 +83,6 @@ shape = SubResource("CircleShape2D_grrqi")
 texture_filter = 1
 scale = Vector2(10, 10)
 sprite_frames = SubResource("SpriteFrames_a5nq1")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_nba0u")
