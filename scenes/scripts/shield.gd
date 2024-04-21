@@ -42,7 +42,7 @@ func _process(delta):
 		cooldown_timer += delta
 
 	if cooldown_timer > cooldown:
-		energy = clamp(energy + shield_regen * delta, 0, max_shield)
+		energy = clamp(energy, 0, max_shield)
 
 func burst():
 	if energy < 100:
@@ -51,9 +51,9 @@ func burst():
 	energy -= 100
 	if energy <= 0:
 		cooldown_timer = 0
-	
+
 	is_bursting = true
 	burst_timer = 0
 	$AudioStreamPlayer2D.play()
-	
+
 
