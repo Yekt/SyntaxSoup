@@ -12,6 +12,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_top = 7.0
+offset_bottom = 7.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_hu31w")
@@ -80,9 +82,15 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
 text = "Exit"
 flat = true
 
+[node name="NameInput" type="TextEdit" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+clip_contents = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+placeholder_text = "Enter name.."
+
 [node name="PublishScoreButton" type="Button" parent="VBoxContainer/ActionsContainer"]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
 theme_override_font_sizes/font_size = 46
@@ -90,17 +98,40 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
 text = "Publish my Score"
 flat = true
 
-[node name="NameInput" type="TextEdit" parent="VBoxContainer/ActionsContainer"]
-unique_name_in_owner = true
-visible = false
-clip_contents = true
-custom_minimum_size = Vector2(100, 100)
+[node name="krankerName" type="VBoxContainer" parent="VBoxContainer/ActionsContainer"]
 layout_mode = 2
-placeholder_text = "Enter name.."
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_35y7a")
 autoplay = true
+
+[node name="HighScoreRequest" type="HTTPRequest" parent="."]
+unique_name_in_owner = true
 
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/RestartButton" to="." method="restart_game"]
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/StartMenuButton" to="." method="start_menu"]
