@@ -25,8 +25,8 @@ func _physics_process(delta):
 		$AudioStreamPlayer2D.play()
 		$"/root/Game/EnergyLink".brightness = 2.0
 
-		$"/root/Game/Attacker/Shield".energy += globals.ENERGY_CONVERSION
-		$Shield.energy += globals.ENERGY_CONVERSION
+		$"/root/Game/Attacker/Shield".energy += globals.SHIELD_RECHARGE_LEVEL
+		$Shield.energy += globals.SHIELD_RECHARGE_LEVEL
 		
 	if globals.SCORE >= globals.LAST_UPGRADE + globals.SCORE_SHOW_UPGRADE:
 		show_upgrades.emit()
