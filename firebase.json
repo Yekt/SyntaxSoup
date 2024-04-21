@@ -1,6 +1,7 @@
 {
   "hosting": {
-    "public": "./build/web",
+  "headers": [ { "source": "*", "headers": [ { "key": "Cross-Origin-Embedder-Policy", "value": "require-corp" }, { "key": "Cross-Origin-Opener-Policy", "value": "same-origin" } ] } ],
+    "public": "/home/runner/.local/share/godot/builds/Web",
     "ignore": [
       "firebase.json",
       "**/.*",
@@ -8,3 +9,4 @@
     ]
   }
 }
+
