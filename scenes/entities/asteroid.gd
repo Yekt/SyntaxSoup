@@ -90,6 +90,9 @@ func spawn_children():
 
 
 func hit(damage):
+	if IS_DESTROYED:
+		return
+
 	HEALTH -= damage
 	if HEALTH <= 0:
 		self.destroy()
