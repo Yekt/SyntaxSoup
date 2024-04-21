@@ -1,7 +1,7 @@
 extends Control
 
 
-const SPEED = 500
+const SPEED = 0.1
 
 
 func _ready():
@@ -11,7 +11,7 @@ func _ready():
 
 
 func _process(delta):
-	var progress = fmod(-0.1 * delta, 1.0)
+	var progress = fmod(-SPEED * delta, 1.0)
 	%AttackerPosition.progress_ratio += progress
 	%Attacker.global_position = %AttackerPosition.global_position
 	%SupporterPosition.progress_ratio += progress
@@ -24,3 +24,7 @@ func start_game():
 
 func show_controls():
 	print("This does nothing for now!")
+	
+
+func exit_game():
+	get_tree().quit()

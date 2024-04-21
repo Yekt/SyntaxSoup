@@ -4,13 +4,19 @@
 [ext_resource type="PackedScene" uid="uid://dispcdksyboha" path="res://scenes/entities/attacker.tscn" id="2_5qbvn"]
 [ext_resource type="PackedScene" uid="uid://bhhktlh1a1cui" path="res://scenes/entities/supporter.tscn" id="3_b0be5"]
 [ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="4_b3dwb"]
-[ext_resource type="Script" path="res://scenes/screens/ScorePanel.gd" id="5_3hegm"]
 
 [sub_resource type="Curve2D" id="Curve2D_tvcxy"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, -136, 19, 0, 0, 0, 0, -137, 1071)
 }
 point_count = 2
+
+[sub_resource type="GDScript" id="GDScript_ojmii"]
+script/source = "extends RichTextLabel
+
+func _process(delta):
+	self.text = \"Score: \" + str(get_node(\"/root/Globals\").SCORE)
+"
 
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
@@ -48,6 +54,6 @@ offset_right = 1894.0
 offset_bottom = 180.0
 theme_override_font_sizes/normal_font_size = 50
 fit_content = true
-script = ExtResource("5_3hegm")
+script = SubResource("GDScript_ojmii")
 
 [connection signal="timeout" from="SpawnArea/SpawnTimer" to="." method="spawn_asteroid"]

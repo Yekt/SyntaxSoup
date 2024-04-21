@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dby2nq1eahwv8"]
+[gd_scene load_steps=4 format=3 uid="uid://dby2nq1eahwv8"]
 
-[ext_resource type="Script" path="res://scenes/screens/submit.gd" id="1_hhqly"]
-[ext_resource type="Script" path="res://scenes/screens/StartButton.gd" id="3_beqb0"]
+[ext_resource type="Script" path="res://scenes/scripts/game_over.gd" id="1_yqeok"]
+[ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="3_pt83h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_050d5"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -14,6 +16,9 @@ offset_right = 3.0
 offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yqeok")
+
+[node name="background" parent="." instance=ExtResource("3_pt83h")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
@@ -22,34 +27,78 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.5
-offset_top = -180.0
-offset_right = 141.5
-offset_bottom = 180.0
+offset_left = -328.0
+offset_top = -262.0
+offset_right = 329.0
+offset_bottom = 205.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 100
 
-[node name="Score" type="RichTextLabel" parent="VBoxContainer"]
+[node name="GameOver" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 121
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="ScoreLabel" type="Label" parent="VBoxContainer/ScoreContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Score"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Score" type="Label" parent="VBoxContainer/ScoreContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Verkackt du Null"
-fit_content = true
+theme_override_font_sizes/font_size = 71
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+[node name="ActionsContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="RestartButton" type="Button" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
+text = "Restart Game"
+flat = true
+
+[node name="StartMenuButton" type="Button" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
+text = "Exit"
+flat = true
+
+[node name="PublishScoreButton" type="Button" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
+text = "Publish my Score"
+flat = true
+
+[node name="NameInput" type="TextEdit" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
-placeholder_text = "Hier könnte ihre Werbung stehen."
+placeholder_text = "Enter name.."
 
-[node name="submit" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Submit Highscore"
-script = ExtResource("1_hhqly")
-
-[node name="restart" type="Button" parent="VBoxContainer"]
-layout_mode = 2
-text = "Restart"
-script = ExtResource("3_beqb0")
-
-[connection signal="pressed" from="VBoxContainer/submit" to="VBoxContainer/submit" method="_on_pressed"]
-[connection signal="pressed" from="VBoxContainer/restart" to="VBoxContainer/restart" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/ActionsContainer/RestartButton" to="." method="restart_game"]
+[connection signal="pressed" from="VBoxContainer/ActionsContainer/StartMenuButton" to="." method="start_menu"]
+[connection signal="pressed" from="VBoxContainer/ActionsContainer/PublishScoreButton" to="." method="publish_score"]
