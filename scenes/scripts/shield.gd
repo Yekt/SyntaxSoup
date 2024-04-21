@@ -23,7 +23,7 @@ func _process(delta):
 		scale = Vector2(1, 1)
 	elif is_bursting:
 		get_child(2).material.set_shader_parameter("time", burst_timer)
-		scale = Vector2(burst_strength, burst_strength) * burst_timer
+		scale = Vector2(burst_strength, burst_strength) * burst_timer * 0.15
 
 	get_child(2).visible = is_bursting
 
