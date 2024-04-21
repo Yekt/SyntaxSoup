@@ -9,6 +9,7 @@ var SHIELD_REGEN_PER_S = 10
 var GLOBALS
 var IMMUNITY_DURATION = 0.5
 var IMMUNITY_TIMER = 1000
+var MAGNET_STRENGTH = 4
 
 
 func hit(damage):
@@ -36,11 +37,19 @@ func _physics_process(delta):
 	var direction = Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
 	velocity = direction * MOVEMENT_SPEED
 
-	for other in $PickupArea.get_overlapping_bodies():
-		if other is RigidBody2D and other.get_collision_layer_value(2):
-			other.queue_free()
-			other.set_collision_layer_value(2, false)
-			GLOBALS.add_score(1)
+	for other in $PickupArea.get_overlapping_areas():
+		other.queue_free()
+		other.set_collision_layer_value(2, false)
+		GLOBALS.add_score(1)
+
+	if Input.is_action_pressed("supporter_magnet"):
+		for other in $MagnetArea.get_overlapping_areas():
+			var speed = other.velocity.length()
+			var dir = other.velocity.normalized()
+			var to_resource = (position - other.position).normalized()
+			dir = (dir + to_resource * MAGNET_STRENGTH * delta).normalized()
+			other.velocity = dir * speed
+			print(other.name)
 
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)

@@ -18,6 +18,7 @@ var CHILDREN_COUNT
 var IS_DESTROYED = false
 var ROTATION
 var DAMAGE
+var velocity
 
 
 static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
@@ -30,7 +31,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.SPEED = 600 * speed_randomizer
 		asteroid.HEALTH = 2
 		asteroid.CHILDREN_COUNT = 3
-		asteroid.ROTATION = randf_range(-0.1, 0.1)
+		asteroid.ROTATION = randf_range(2, 2)
 		asteroid.DAMAGE = 10
 	elif (size == MEDIUM):
 		asteroid.scale = Vector2(0.4, 0.4)
@@ -38,7 +39,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.SPEED = 450 * speed_randomizer
 		asteroid.HEALTH = 3
 		asteroid.CHILDREN_COUNT = 3
-		asteroid.ROTATION = randf_range(-0.05, 0.05)
+		asteroid.ROTATION = randf_range(-1, 1)
 		asteroid.DAMAGE = 20
 	else: 
 		asteroid.scale = Vector2(0.6, 0.6)
@@ -46,7 +47,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.SPEED = 300 * speed_randomizer
 		asteroid.HEALTH = 5
 		asteroid.CHILDREN_COUNT = 2
-		asteroid.ROTATION = randf_range(-0.01, 0.01)
+		asteroid.ROTATION = randf_range(-0.3, 0.3)
 		asteroid.DAMAGE = 30
 	asteroid.DIRECTION = direction
 	return asteroid
@@ -55,11 +56,12 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 func _ready():
 	GLOBALS = get_node("/root/Globals")
 	SPEED *= GLOBALS.SPEED_SCALE
+	velocity = SPEED * DIRECTION
 
 
 func _process(delta):
-	position = position + DIRECTION * SPEED * delta
-	rotate(ROTATION)
+	position += velocity * delta
+	rotate(ROTATION * delta)
 
 	if IS_DESTROYED:
 		if !$Sprite.is_playing():
@@ -78,7 +80,7 @@ func spawn_children():
 		if SIZE == SMALL:
 			var child = RESOURCE.instantiate()
 			child.position = position
-			child.velocity = DIRECTION * SPEED * 0.01
+			child.velocity = velocity
 			get_parent().add_child(child)
 		else:
 			var y_delta = 0.4 + abs(ROTATION) * 8

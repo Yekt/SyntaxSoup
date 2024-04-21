@@ -4,11 +4,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_mxhdw"]
 
-[node name="Resource" type="RigidBody2D"]
-collision_layer = 2
+[node name="Resource" type="Area2D"]
+collision_layer = 34
 collision_mask = 0
-mass = 0.01
-gravity_scale = 0.0
 script = ExtResource("1_t62ox")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
