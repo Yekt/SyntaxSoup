@@ -28,7 +28,7 @@ float noise(vec2 uv) {
                      dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) + 0.5;
 }
 
-float fractal_noise(vec2 p, int layers, float falloff) {
+float fractal_noise(vec2 p, int layers) {
 	float r = 0.0;
 	float scale = 1.0;
 	for (int i = 0; i < layers; i++) {
@@ -57,9 +57,9 @@ vec3 star(vec2 uv) {
 
 vec3 background(vec2 uv, vec2 d) {
 	vec2 offset = d * speed;
-	vec3 dust1 = vec3(0.1, 0.15, 0.25) * fractal_noise((uv + offset) * 12.0, 4, 0.0);
-	vec3 dust2 = vec3(0.15, 0.0, 0.0) * fractal_noise((uv + offset * 2.0) * 8.0 + vec2(3.0, 4.0), 4, 0.0);
-	vec3 dust3 = vec3(0.03, 0.05, 0.02) * fractal_noise((uv + offset * 1.5) * 6.0 + vec2(2.0, 6.0), 4, 0.0);
+	vec3 dust1 = vec3(0.1, 0.15, 0.25) * fractal_noise((uv + offset) * 12.0, 4);
+	vec3 dust2 = vec3(0.15, 0.0, 0.0) * fractal_noise((uv + offset * 2.0) * 8.0 + vec2(3.0, 4.0), 4);
+	vec3 dust3 = vec3(0.03, 0.05, 0.02) * fractal_noise((uv + offset * 1.5) * 6.0 + vec2(2.0, 6.0), 4);
 
 	vec3 star1 = star(uv + offset);
 	vec3 star2 = star(uv * 1.2 + offset + vec2(1.0, 2.0));

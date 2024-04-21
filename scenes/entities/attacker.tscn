@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dispcdksyboha"]
+[gd_scene load_steps=38 format=3 uid="uid://dispcdksyboha"]
 
 [ext_resource type="Script" path="res://scenes/entities/attacker.gd" id="1_5n3m0"]
 [ext_resource type="Texture2D" uid="uid://dsvog4sdetuq3" path="res://scenes/textures/Engine.png" id="2_i4ypy"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://b840hdwe2vju6" path="res://scenes/textures/Main Ship - Base - Slight damage.png" id="4_whcq6"]
 [ext_resource type="Texture2D" uid="uid://b2chh23emhuwu" path="res://scenes/textures/Main Ship - Base - Damaged.png" id="5_x7vmg"]
 [ext_resource type="Texture2D" uid="uid://cbk2t6xxntmk8" path="res://scenes/textures/Main Ship - Base - Very damaged.png" id="6_7dtbf"]
-[ext_resource type="PackedScene" uid="uid://pra3mls2eebx" path="res://scenes/entities/shield.tscn" id="8_fbkni"]
+[ext_resource type="PackedScene" uid="uid://5po700lnixfo" path="res://scenes/entities/shield.tscn" id="8_fbkni"]
+[ext_resource type="Texture2D" uid="uid://cq2kg4c74i5n0" path="res://scenes/textures/06.png" id="9_hxwoy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08lvl"]
 radius = 20.0
@@ -142,6 +143,92 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lpjtw"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(192, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sk1my"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(144, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gfw7g"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(96, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3iyg"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(48, 16, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pgd4b"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(0, 16, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sy7op"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lpjtw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sk1my")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gfw7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d3iyg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pgd4b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_blt74"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(192, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lwaht"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(144, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2jne6"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(96, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g24jr"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(48, 64, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mlyxm"]
+atlas = ExtResource("9_hxwoy")
+region = Rect2(0, 64, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdkj2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_blt74")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lwaht")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2jne6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g24jr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mlyxm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Attacker" type="CharacterBody2D"]
 rotation = -1.5708
 scale = Vector2(3, 3)
@@ -187,5 +274,18 @@ frame = 1
 frame_progress = 0.472109
 
 [node name="Shield" parent="." instance=ExtResource("8_fbkni")]
+
+[node name="ShieldHud" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(30, 0)
+rotation = 1.5708
+sprite_frames = SubResource("SpriteFrames_sy7op")
+
+[node name="HealthHud" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-30, 0)
+rotation = -1.5708
+scale = Vector2(1, -1)
+sprite_frames = SubResource("SpriteFrames_kdkj2")
 
 [connection signal="timeout" from="AttackTimer" to="." method="shoot"]
