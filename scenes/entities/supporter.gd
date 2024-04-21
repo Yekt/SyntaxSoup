@@ -25,3 +25,6 @@ func _physics_process(delta):
 
 func get_input_direction():
 	return Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
+
+func get_dodge_input():
+	return Input.is_action_pressed("supporter_dodge")

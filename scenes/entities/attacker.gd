@@ -15,6 +15,9 @@ func _physics_process(delta):
 func get_input_direction():
 	return Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
 
+func get_dodge_input():
+	return Input.is_action_pressed("attacker_dodge")
+
 func shoot():
 	var projectile = PROJECTILE.instantiate()
 	if blaster:

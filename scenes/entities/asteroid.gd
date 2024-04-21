@@ -69,10 +69,12 @@ func _process(delta):
 		return
 
 	for b in get_overlapping_bodies():
-		b.hit(DAMAGE)
+		if b.is_dodgeing():
+			continue
 
-	if !get_overlapping_bodies().is_empty():
+		b.hit(DAMAGE)
 		self.destroy()
+		break
 
 
 func spawn_children():
