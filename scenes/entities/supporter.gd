@@ -16,6 +16,7 @@ func _physics_process(delta):
 		other.queue_free()
 		other.set_collision_layer_value(2, false)
 		globals.add_score(1)
+		$AudioStreamPlayer2D.play()
 
 	if Input.is_action_pressed("supporter_magnet"):
 		for other in $MagnetArea.get_overlapping_areas():
