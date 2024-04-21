@@ -104,6 +104,7 @@ func destroy():
 	spawn_children()
 	IS_DESTROYED = true
 	$Sprite.play("default")
+	$AudioStreamPlayer2D.play()
 
 
 func on_screen_exited():
