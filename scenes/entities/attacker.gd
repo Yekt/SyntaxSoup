@@ -17,6 +17,9 @@ func _physics_process(delta):
 	else:
 		$EngineAnimation.play("idle")
 
+	if Input.is_action_pressed("attacker_shield_burst") and $Shield.burst_timer > 5:
+		$Shield.burst()
+
 func get_input_direction():
 	return Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
 
