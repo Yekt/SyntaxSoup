@@ -19,7 +19,7 @@ jobs:
       - name: Check Repo
         run: ls && pwd && ls ./build && ls ./build/web && ls /home/runner/.local && ls /home/runner/.local/share && ls /home/runner/.local/share/godot && ls /home/runner/.local/share/godot/builds && echo _____________________ && ls /home/runner/.local/share/godot/builds/Web
       - name: Move Build
-        run: cp -r /home/runner/.local/share/godot/builds/Web/ /home/runner/work/SyntaxSoup/SyntaxSoup/build/web/
+        run: cp -r /home/runner/.local/share/godot/builds/Web/* /home/runner/work/SyntaxSoup/SyntaxSoup/build/web/ && ls build/web
       - name: Web Deployment
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
