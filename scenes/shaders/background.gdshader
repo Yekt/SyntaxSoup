@@ -46,13 +46,13 @@ vec3 hsv2rgb(vec3 c) {
 }
 
 vec3 star(vec2 uv) {
-	vec2 tile_pos = round((uv) * 5.0) / 5.0;
+	vec2 tile_pos = round((uv) * 4.0) / 4.0;
 	vec2 star_pos = tile_pos + random(tile_pos * 10.0) * 0.06;
 	vec2 delta = abs(star_pos - uv);
 	float star_cross = smoothstep(0.01, 0.0, min(delta.x * 2.0, delta.y));
 	float star_radius = smoothstep(0.02, 0.0, distance(star_pos, uv));
-	float s = star_cross * star_radius;
-	return hsv2rgb(vec3(noise(tile_pos), 0.2, 1.0)) * s;
+	float s = star_cross * star_cross * star_cross * star_radius;
+	return hsv2rgb(vec3(noise(tile_pos), 0.3, 0.7)) * s;
 }
 
 vec3 background(vec2 uv, vec2 d) {
@@ -62,7 +62,7 @@ vec3 background(vec2 uv, vec2 d) {
 	vec3 dust3 = vec3(0.03, 0.05, 0.02) * fractal_noise((uv + offset * 1.5) * 6.0 + vec2(2.0, 6.0), 4, 0.0);
 
 	vec3 star1 = star(uv + offset);
-	vec3 star2 = star(uv + offset + vec2(1.0, 2.0));
+	vec3 star2 = star(uv * 1.2 + offset + vec2(1.0, 2.0));
 
 	return dust1 + dust2 + dust3 + star1 + star2;
 }
@@ -70,7 +70,7 @@ vec3 background(vec2 uv, vec2 d) {
 void vertex() {}
 
 void fragment() {
-	vec2 uv = round(FRAGCOORD.xy / 8.0) * (SCREEN_PIXEL_SIZE * 8.0);
+	vec2 uv = round(FRAGCOORD.xy / 6.0) * (SCREEN_PIXEL_SIZE * 6.0);
 	vec2 d = rotate(vec2(-time, 0), angle);
 	COLOR = vec4(background(uv, d), 1.0);
 }
