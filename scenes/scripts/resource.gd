@@ -1,4 +1,4 @@
-extends RigidBody2D
+extends Area2D
 
 var textures = [
 	preload("res://scenes/textures/Minerals/Icon8.png"),
@@ -19,7 +19,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	move_and_collide(velocity)
+	position += velocity * delta
 	rotate(rot_speed * delta)
 
 func on_screen_exited():
