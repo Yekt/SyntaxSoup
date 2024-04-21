@@ -2,13 +2,16 @@ extends Ship
 
 const PROJECTILE = preload("res://scenes/entities/projectile.tscn")
 
-var attack_spead = 0.25
+var damage = 1
 var blaster = true
+var globals
 
 func _ready():
-	%AttackTimer.wait_time = attack_spead
+	globals = get_node("/root/Globals")
+	update_values()
 
 func _physics_process(delta):
+	update_values()
 	super._physics_process(delta)
 	$ShipSprite.frame = 3 - floor((float(health) / float(max_health + 1)) * 4)
 
@@ -27,8 +30,14 @@ func shoot():
 	var projectile = PROJECTILE.instantiate()
 	if blaster:
 		projectile.global_position = %Blaster1.global_position
+		projectile.DAMAGE = damage
 		%Blaster1.add_child(projectile)
 	else:
 		projectile.global_position = %Blaster2.global_position
+		projectile.DAMAGE = damage
 		%Blaster2.add_child(projectile)
 	blaster = !blaster
+	
+func update_values():
+	%AttackTimer.wait_time = 0.25 / globals.BLASTER_SPEED_LEVEL
+	damage = globals.BLASTER_DAMAGE_LEVEL
