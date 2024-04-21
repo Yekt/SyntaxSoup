@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dellvo0q8pxja"]
+[gd_scene load_steps=41 format=3 uid="uid://dellvo0q8pxja"]
 
 [ext_resource type="Theme" uid="uid://bwvkxk7ybstes" path="res://scenes/theme/theme.tres" id="1_8sa5y"]
 [ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="1_h1e2x"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://3fo3q7vaak2q" path="res://scenes/textures/Kla'ed - Support ship - Engine.png" id="4_j1py2"]
 [ext_resource type="Texture2D" uid="uid://dgr7b06nbc6cx" path="res://scenes/textures/Autocannon.png" id="5_kdwl5"]
 [ext_resource type="Texture2D" uid="uid://2dq1mop2s5kb" path="res://scenes/textures/Kla'ed - Support ship - Base.png" id="6_cqq3o"]
+[ext_resource type="Texture2D" uid="uid://bnigs8tuvl3fq" path="res://scenes/textures/Asteroid.png" id="9_6meb0"]
 
 [sub_resource type="Curve2D" id="Curve2D_xh08j"]
 _data = {
@@ -148,6 +149,77 @@ animations = [{
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01ltk"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbtbp"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dltse"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xnbau"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2t763"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5em03"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(384, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv7q6"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(480, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1d4ar"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(576, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5psh1"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(672, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1jvf"]
+atlas = ExtResource("9_6meb0")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yr4ov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbtbp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dltse")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xnbau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2t763")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5em03")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv7q6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1d4ar")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5psh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1jvf")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
 [node name="Start" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -159,6 +231,17 @@ theme = ExtResource("1_8sa5y")
 script = ExtResource("1_pw3nn")
 
 [node name="background" parent="." instance=ExtResource("1_h1e2x")]
+
+[node name="GameName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 33.0
+offset_right = 509.0
+offset_bottom = 126.0
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 106
+text = "SyntaxSoup"
+vertical_alignment = 1
 
 [node name="AttackerPath" type="Path2D" parent="."]
 position = Vector2(90, 82)
@@ -253,6 +336,38 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_hn3bl")
 text = "Exit"
 flat = true
 alignment = 0
+
+[node name="AsteroidL" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(1311, 70)
+rotation = 0.610865
+scale = Vector2(8, 8)
+sprite_frames = SubResource("SpriteFrames_yr4ov")
+
+[node name="AsteroidM" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(958, 780)
+rotation = -1.58825
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_yr4ov")
+
+[node name="AsteroidS1" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(373, 435)
+rotation = -3.28122
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_yr4ov")
+
+[node name="AsteroidS2" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+position = Vector2(1711, 906)
+rotation = -6.99877
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_yr4ov")
 
 [connection signal="pressed" from="Menu/StartButton" to="." method="start_game"]
 [connection signal="pressed" from="Menu/ControlsButton" to="." method="show_controls"]
