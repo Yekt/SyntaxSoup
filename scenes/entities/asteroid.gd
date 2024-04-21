@@ -101,9 +101,15 @@ func hit(damage):
 
 
 func destroy():
+	if IS_DESTROYED:
+		return
+
 	spawn_children()
 	IS_DESTROYED = true
+	set_collision_layer_value(4, false)
+	set_collision_layer_value(6, false)
 	$Sprite.play("default")
+	$AudioStreamPlayer2D.play()
 
 
 func on_screen_exited():
