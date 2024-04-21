@@ -81,7 +81,8 @@ func spawn_children():
 			child.velocity = DIRECTION * SPEED * 0.01
 			get_parent().add_child(child)
 		else:
-			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-0.8, 0.8)))
+			var y_delta = 0.4 + abs(ROTATION) * 8
+			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-y_delta, y_delta)))
 			child.position = position
 			get_parent().add_child(child)
 
