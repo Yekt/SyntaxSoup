@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "./build/Web",
+    "public": "/home/runner/.local/share/godot/build/web",
     "ignore": [
       "firebase.json",
       "**/.*",
