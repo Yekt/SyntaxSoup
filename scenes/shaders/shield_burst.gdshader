@@ -20,17 +20,6 @@ float noise(vec2 uv) {
                      dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) + 0.5;
 }
 
-float fractal_noise(vec2 p, int layers, float falloff) {
-	float r = 0.0;
-	float scale = 1.0;
-	for (int i = 0; i < layers; i++) {
-		r += noise(p) * scale;
-		p *= 2.0;
-		scale /= 2.0;
-	}
-	return r - 0.5;
-}
-
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
@@ -41,7 +30,7 @@ void fragment() {
 	pos = round(pos * pixel_scale) / pixel_scale;
 	
 	float min_radius = time / 5.0;
-	float max_radius = min_radius + 0.01;
+	float max_radius = min_radius + 0.005;
 
 	float d = length(pos);
 	if (d > max_radius || d < min_radius) {
