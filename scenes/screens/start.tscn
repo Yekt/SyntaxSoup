@@ -214,17 +214,21 @@ texture = ExtResource("6_cqq3o")
 sprite_frames = SubResource("SpriteFrames_xkxhn")
 autoplay = "default"
 
-[node name="StartButton" type="Button" parent="."]
-unique_name_in_owner = true
+[node name="Menu" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 41.0
-offset_top = -231.0
-offset_right = 300.0
-offset_bottom = -159.0
+offset_left = 69.0
+offset_top = -244.0
+offset_right = 328.0
+offset_bottom = -20.0
 grow_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="StartButton" type="Button" parent="Menu"]
+unique_name_in_owner = true
+layout_mode = 2
 theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
 theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_hn3bl")
@@ -232,16 +236,8 @@ text = "Start Game"
 flat = true
 alignment = 0
 
-[node name="ControlsButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 39.0
-offset_top = -138.0
-offset_right = 298.0
-offset_bottom = -66.0
-grow_vertical = 0
+[node name="ControlsButton" type="Button" parent="Menu"]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
 theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_01ltk")
@@ -249,5 +245,15 @@ text = "Controls"
 flat = true
 alignment = 0
 
-[connection signal="pressed" from="StartButton" to="." method="start_game"]
-[connection signal="pressed" from="ControlsButton" to="." method="show_controls"]
+[node name="ExitButton" type="Button" parent="Menu"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hn3bl")
+text = "Exit"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="Menu/StartButton" to="." method="start_game"]
+[connection signal="pressed" from="Menu/ControlsButton" to="." method="show_controls"]
+[connection signal="pressed" from="Menu/ExitButton" to="." method="exit_game"]

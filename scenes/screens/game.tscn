@@ -13,6 +13,13 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="GDScript" id="GDScript_ojmii"]
+script/source = "extends RichTextLabel
+
+func _process(delta):
+	self.text = \"Score: \" + str(get_node(\"/root/Globals\").SCORE)
+"
+
 [node name="Game" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_v10s8")
@@ -56,6 +63,6 @@ offset_right = 1894.0
 offset_bottom = 180.0
 theme_override_font_sizes/normal_font_size = 50
 fit_content = true
-script = ExtResource("5_3hegm")
+script = SubResource("GDScript_ojmii")
 
 [connection signal="timeout" from="SpawnArea/SpawnTimer" to="." method="spawn_asteroid"]
