@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dby2nq1eahwv8"]
+[gd_scene load_steps=6 format=3 uid="uid://dby2nq1eahwv8"]
 
 [ext_resource type="Theme" uid="uid://bwvkxk7ybstes" path="res://scenes/theme/theme.tres" id="1_hu31w"]
 [ext_resource type="Script" path="res://scenes/scripts/game_over.gd" id="1_yqeok"]
 [ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="3_pt83h"]
+[ext_resource type="AudioStream" uid="uid://83c8hqq403ps" path="res://scenes/sounds/Retro Explosion Long 02.wav" id="4_35y7a"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_050d5"]
 
@@ -96,6 +97,10 @@ clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 placeholder_text = "Enter name.."
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_35y7a")
+autoplay = true
 
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/RestartButton" to="." method="restart_game"]
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/StartMenuButton" to="." method="start_menu"]
