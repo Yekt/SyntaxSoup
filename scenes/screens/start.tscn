@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://dellvo0q8pxja"]
+[gd_scene load_steps=30 format=3 uid="uid://dellvo0q8pxja"]
 
+[ext_resource type="Theme" uid="uid://bwvkxk7ybstes" path="res://scenes/theme/theme.tres" id="1_8sa5y"]
 [ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="1_h1e2x"]
 [ext_resource type="Script" path="res://scenes/screens/start.gd" id="1_pw3nn"]
 [ext_resource type="Texture2D" uid="uid://d1e1fb08jt4fb" path="res://scenes/textures/Ship.png" id="3_oclf7"]
@@ -154,6 +155,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_8sa5y")
 script = ExtResource("1_pw3nn")
 
 [node name="background" parent="." instance=ExtResource("1_h1e2x")]
