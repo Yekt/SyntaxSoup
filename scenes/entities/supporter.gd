@@ -23,14 +23,12 @@ func _physics_process(delta):
 	var direction = Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
 	velocity = direction * MOVEMENT_SPEED
 	move_and_slide()
-	for i in get_slide_collision_count():
-		var other = get_slide_collision(i).get_collider()
 
-		if other is RigidBody2D:
-			if other.get_collision_layer_value(2):
-				other.queue_free()
-				other.set_collision_layer_value(2, false)
-				GLOBALS.add_score(1)
+	for other in $PickupArea.get_overlapping_bodies():
+		if other is RigidBody2D and other.get_collision_layer_value(2):
+			other.queue_free()
+			other.set_collision_layer_value(2, false)
+			GLOBALS.add_score(1)
 
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)

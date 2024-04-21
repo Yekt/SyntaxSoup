@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bhhktlh1a1cui"]
+[gd_scene load_steps=29 format=3 uid="uid://bhhktlh1a1cui"]
 
 [ext_resource type="Script" path="res://scenes/entities/supporter.gd" id="1_xc7d7"]
 [ext_resource type="Texture2D" uid="uid://2dq1mop2s5kb" path="res://scenes/textures/Kla'ed - Support ship - Base.png" id="2_tu6m5"]
@@ -164,10 +164,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_vlrn4"]
+radius = 35.0
+
 [node name="Supporter" type="CharacterBody2D"]
 rotation = -1.5708
 collision_layer = 7
-collision_mask = 3
 platform_floor_layers = 4294901760
 script = ExtResource("1_xc7d7")
 
@@ -192,3 +194,10 @@ texture_filter = 1
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_wm281")
 autoplay = "default"
+
+[node name="PickupArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea"]
+shape = SubResource("CircleShape2D_vlrn4")
