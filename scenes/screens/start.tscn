@@ -1,0 +1,251 @@
+[gd_scene load_steps=29 format=3 uid="uid://dellvo0q8pxja"]
+
+[ext_resource type="PackedScene" uid="uid://chhfogupnq103" path="res://scenes/entities/background.tscn" id="1_h1e2x"]
+[ext_resource type="Script" path="res://scenes/screens/start.gd" id="1_pw3nn"]
+[ext_resource type="Texture2D" uid="uid://d1e1fb08jt4fb" path="res://scenes/textures/Ship.png" id="3_oclf7"]
+[ext_resource type="Texture2D" uid="uid://dsvog4sdetuq3" path="res://scenes/textures/Engine.png" id="4_h57la"]
+[ext_resource type="Texture2D" uid="uid://3fo3q7vaak2q" path="res://scenes/textures/Kla'ed - Support ship - Engine.png" id="4_j1py2"]
+[ext_resource type="Texture2D" uid="uid://dgr7b06nbc6cx" path="res://scenes/textures/Autocannon.png" id="5_kdwl5"]
+[ext_resource type="Texture2D" uid="uid://2dq1mop2s5kb" path="res://scenes/textures/Kla'ed - Support ship - Base.png" id="6_cqq3o"]
+
+[sub_resource type="Curve2D" id="Curve2D_xh08j"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 350, 147, 0, 0, 0, 0, 463, 161, 0, 0, 0, 0, 572, 188, 0, 0, 0, 0, 631.013, 213.948, 0, 0, 0, 0, 710, 255, 0, 0, 0, 0, 806, 335, 0, 0, 0, 0, 969, 528, 0, 0, 0, 0, 1087, 628, 0, 0, 0, 0, 1196, 704, 0, 0, 0, 0, 1289, 764, 0, 0, 0, 0, 1420, 821, 0, 0, 0, 0, 1484, 834, 0, 0, 0, 0, 1560, 833, 0, 0, 0, 0, 1619, 828, 0, 0, 0, 0, 1666, 811, 0, 0, 0, 0, 1710, 780, 0, 0, 0, 0, 1742, 740, 0, 0, 0, 0, 1778, 659, 0, 0, 0, 0, 1781, 554, 0, 0, 0, 0, 1772, 470, 0, 0, 0, 0, 1749, 392, 0, 0, 0, 0, 1706, 338, 0, 0, 0, 0, 1643, 298, 0, 0, 0, 0, 1546, 271, 0, 0, 0, 0, 1440, 276, 0, 0, 0, 0, 1349, 310, 0, 0, 0, 0, 1226, 381, 0, 0, 0, 0, 1088, 487, 0, 0, 0, 0, 954, 614, 0, 0, 0, 0, 822, 707, 0, 0, 0, 0, 755, 732, 0, 0, 0, 0, 670, 746, 0, 0, 0, 0, 470, 753, 0, 0, 0, 0, 323, 741, 0, 0, 0, 0, 245, 719, 0, 0, 0, 0, 186, 668, 0, 0, 0, 0, 149, 608, 0, 0, 0, 0, 124, 547, 0, 0, 0, 0, 111, 485, 0, 0, 0, 0, 110, 415, 0, 0, 0, 0, 119, 352, 0, 0, 0, 0, 133, 301, 0, 0, 0, 0, 178, 223, 0, 0, 0, 0, 251, 164, 0, 0, 0, 0, 350, 147)
+}
+point_count = 45
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7gxgx"]
+atlas = ExtResource("4_h57la")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ni3j"]
+atlas = ExtResource("4_h57la")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_njis3"]
+atlas = ExtResource("4_h57la")
+region = Rect2(48, 48, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbcp3"]
+atlas = ExtResource("4_h57la")
+region = Rect2(144, 48, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dr6ih"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7gxgx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ni3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_njis3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbcp3")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sprc6"]
+atlas = ExtResource("5_kdwl5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wc2mm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sprc6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ot0i2"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vm2wr"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rp3j6"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvpy3"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svsfq"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psm54"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_121ve"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exat1"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(448, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_emaru"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(512, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wlfa6"]
+atlas = ExtResource("4_j1py2")
+region = Rect2(576, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xkxhn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ot0i2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vm2wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rp3j6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvpy3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svsfq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psm54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_121ve")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exat1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_emaru")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wlfa6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hn3bl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_01ltk"]
+
+[node name="Start" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_pw3nn")
+
+[node name="background" parent="." instance=ExtResource("1_h1e2x")]
+
+[node name="AttackerPath" type="Path2D" parent="."]
+position = Vector2(90, 82)
+scale = Vector2(0.774381, 0.774381)
+curve = SubResource("Curve2D_xh08j")
+
+[node name="AttackerPosition" type="PathFollow2D" parent="AttackerPath"]
+unique_name_in_owner = true
+position = Vector2(350, 147)
+rotation = 0.123266
+
+[node name="SupporterPath" type="Path2D" parent="."]
+position = Vector2(438, 18)
+scale = Vector2(0.759096, 0.813282)
+curve = SubResource("Curve2D_xh08j")
+
+[node name="SupporterPosition" type="PathFollow2D" parent="SupporterPath"]
+unique_name_in_owner = true
+position = Vector2(350, 147)
+rotation = 0.123266
+
+[node name="Attacker" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1533, 75)
+rotation = -1.5708
+scale = Vector2(3, 3)
+
+[node name="Ship" type="Sprite2D" parent="Attacker"]
+texture_filter = 1
+texture = ExtResource("3_oclf7")
+
+[node name="Booster" type="AnimatedSprite2D" parent="Attacker"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_dr6ih")
+animation = &"new_animation"
+autoplay = "new_animation"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Attacker"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wc2mm")
+
+[node name="Supporter" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1649, 73)
+rotation = -1.5708
+scale = Vector2(3, 3)
+
+[node name="Ship" type="Sprite2D" parent="Supporter"]
+texture_filter = 1
+texture = ExtResource("6_cqq3o")
+
+[node name="Booster" type="AnimatedSprite2D" parent="Supporter"]
+sprite_frames = SubResource("SpriteFrames_xkxhn")
+autoplay = "default"
+
+[node name="StartButton" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 41.0
+offset_top = -231.0
+offset_right = 300.0
+offset_bottom = -159.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_hn3bl")
+text = "Start Game"
+flat = true
+alignment = 0
+
+[node name="ControlsButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = -138.0
+offset_right = 298.0
+offset_bottom = -66.0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_01ltk")
+text = "Controls"
+flat = true
+alignment = 0
+
+[connection signal="pressed" from="StartButton" to="." method="start_game"]
+[connection signal="pressed" from="ControlsButton" to="." method="show_controls"]

@@ -17,6 +17,7 @@ var HEALTH
 var CHILDREN_COUNT
 var IS_DESTROYED = false
 var ROTATION
+var DAMAGE
 
 
 static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
@@ -30,6 +31,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.HEALTH = 2
 		asteroid.CHILDREN_COUNT = 3
 		asteroid.ROTATION = randf_range(-0.1, 0.1)
+		asteroid.DAMAGE = 10
 	elif (size == MEDIUM):
 		asteroid.scale = Vector2(0.4, 0.4)
 		asteroid.SIZE = MEDIUM
@@ -37,6 +39,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.HEALTH = 3
 		asteroid.CHILDREN_COUNT = 3
 		asteroid.ROTATION = randf_range(-0.05, 0.05)
+		asteroid.DAMAGE = 20
 	else: 
 		asteroid.scale = Vector2(0.6, 0.6)
 		asteroid.SIZE = LARGE
@@ -44,6 +47,7 @@ static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
 		asteroid.HEALTH = 5
 		asteroid.CHILDREN_COUNT = 2
 		asteroid.ROTATION = randf_range(-0.01, 0.01)
+		asteroid.DAMAGE = 30
 	asteroid.DIRECTION = direction
 	return asteroid
 
@@ -62,6 +66,12 @@ func _process(delta):
 			queue_free()
 		return
 
+	for b in get_overlapping_bodies():
+		b.hit(DAMAGE)
+
+	if !get_overlapping_bodies().is_empty():
+		self.destroy()
+
 
 func spawn_children():
 	for i in CHILDREN_COUNT:
@@ -71,7 +81,8 @@ func spawn_children():
 			child.velocity = DIRECTION * SPEED * 0.01
 			get_parent().add_child(child)
 		else:
-			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-0.8, 0.8)))
+			var y_delta = 0.4 + abs(ROTATION) * 8
+			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-y_delta, y_delta)))
 			child.position = position
 			get_parent().add_child(child)
 
@@ -79,9 +90,13 @@ func spawn_children():
 func hit(damage):
 	HEALTH -= damage
 	if HEALTH <= 0:
-		spawn_children()
-		IS_DESTROYED = true
-		$Sprite.play("default")
+		self.destroy()
+
+
+func destroy():
+	spawn_children()
+	IS_DESTROYED = true
+	$Sprite.play("default")
 
 
 func on_screen_exited():
