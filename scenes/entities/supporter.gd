@@ -29,7 +29,7 @@ func _physics_process(delta):
 				other.queue_free()
 				other.set_collision_layer_value(2, false)
 				GLOBALS.add_score(1)
-        
+		
 	var screen_size = get_viewport_rect().size
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
