@@ -15,8 +15,8 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	$ShipSprite.frame = 3 - floor((float(health) / float(max_health + 1)) * 4)
 
-	$"/root/Game/Hud/HudHealthLeft".frame = floor((float(health) / float(max_health + 1)) * 5)
-	$"/root/Game/Hud/HudShieldLeft".frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
+	$HealthHud.frame = floor((float(health) / float(max_health + 1)) * 5)
+	$ShieldHud.frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
 
 	if get_input_direction().length() > 0.1:
 		$EngineAnimation.play("running")

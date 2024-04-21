@@ -11,8 +11,8 @@ func _physics_process(delta):
 	super._physics_process(delta)
 	update_values()
 
-	$"/root/Game/Hud/HudHealthRight".frame = floor((float(health) / float(max_health + 1)) * 5)
-	$"/root/Game/Hud/HudShieldRight".frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
+	$HealthHud.frame = floor((float(health) / float(max_health + 1)) * 5)
+	$ShieldHud.frame = floor((float($Shield.energy) / float($Shield.max_shield + 1)) * 5)
 
 	for other in $PickupArea.get_overlapping_areas():
 		other.queue_free()
