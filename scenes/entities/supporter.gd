@@ -35,7 +35,6 @@ func _physics_process(delta):
 
 	var direction = Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
 	velocity = direction * MOVEMENT_SPEED
-	move_and_slide()
 
 	for other in $PickupArea.get_overlapping_bodies():
 		if other is RigidBody2D and other.get_collision_layer_value(2):

@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dby2nq1eahwv8"]
+[gd_scene load_steps=3 format=3 uid="uid://dby2nq1eahwv8"]
 
-[ext_resource type="Texture2D" uid="uid://d1e1fb08jt4fb" path="res://scenes/textures/Ship.png" id="1_yk42o"]
-[ext_resource type="Texture2D" uid="uid://bnigs8tuvl3fq" path="res://scenes/textures/Asteroid.png" id="2_ovf7q"]
+[ext_resource type="Script" path="res://scenes/screens/submit.gd" id="1_hhqly"]
 [ext_resource type="Script" path="res://scenes/screens/StartButton.gd" id="3_beqb0"]
 
 [node name="GameOver" type="Control"]
@@ -9,6 +8,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 8.0
+offset_right = 3.0
+offset_bottom = 8.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -26,7 +29,8 @@ offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer"]
+[node name="Score" type="RichTextLabel" parent="VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 text = "Verkackt du Null"
 fit_content = true
@@ -37,10 +41,15 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 placeholder_text = "Hier könnte ihre Werbung stehen."
 
-[node name="TextureButton" type="TextureButton" parent="VBoxContainer"]
+[node name="submit" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("1_yk42o")
-texture_pressed = ExtResource("2_ovf7q")
+text = "Submit Highscore"
+script = ExtResource("1_hhqly")
+
+[node name="restart" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Restart"
 script = ExtResource("3_beqb0")
 
-[connection signal="pressed" from="VBoxContainer/TextureButton" to="VBoxContainer/TextureButton" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/submit" to="VBoxContainer/submit" method="_on_pressed"]
+[connection signal="pressed" from="VBoxContainer/restart" to="VBoxContainer/restart" method="_on_pressed"]
