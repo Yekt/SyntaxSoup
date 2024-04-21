@@ -7,6 +7,7 @@ var cooldown = 2
 var cooldown_timer = 1000
 var is_bursting = false
 var burst_timer = 1000
+var burst_strength = 10
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +23,7 @@ func _process(delta):
 		scale = Vector2(1, 1)
 	elif is_bursting:
 		get_child(2).material.set_shader_parameter("time", burst_timer)
-		scale = Vector2(10, 10) * burst_timer
+		scale = Vector2(burst_strength, burst_strength) * burst_timer
 
 	get_child(2).visible = is_bursting
 
