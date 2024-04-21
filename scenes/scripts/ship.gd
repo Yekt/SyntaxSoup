@@ -39,11 +39,6 @@ func _physics_process(delta):
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
-	if direction.length() > 0.1:
-		$EngineAnimation.play("running")
-	else:
-		$EngineAnimation.play("idle")
-
 func get_input_direction():
 	return Vector2()
 
