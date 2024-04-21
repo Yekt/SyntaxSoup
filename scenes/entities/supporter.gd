@@ -1,5 +1,9 @@
 extends Ship
 
+
+signal show_upgrades
+
+
 var globals
 var magnet_strength = 4
 
@@ -23,6 +27,10 @@ func _physics_process(delta):
 
 		$"/root/Game/Attacker/Shield".energy += globals.ENERGY_CONVERSION
 		$Shield.energy += globals.ENERGY_CONVERSION
+		
+	if globals.SCORE >= globals.LAST_UPGRADE + globals.SCORE_SHOW_UPGRADE:
+		show_upgrades.emit()
+		globals.LAST_UPGRADE += globals.SCORE_SHOW_UPGRADE
 
 	if Input.is_action_pressed("supporter_magnet"):
 		for other in $MagnetArea.get_overlapping_areas():

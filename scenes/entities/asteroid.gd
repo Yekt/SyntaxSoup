@@ -21,33 +21,33 @@ var DAMAGE
 var velocity
 
 
-static func create_asteroid(size: int, direction: Vector2) -> Asteroid:
+static func create_asteroid(size: int, direction: Vector2, globals) -> Asteroid:
 	direction = direction.normalized()
 	var speed_randomizer = randf_range(0.8, 1.2)
 	var asteroid = ASTEROID.instantiate()
 	if (size <= SMALL):
 		asteroid.scale = Vector2(0.2, 0.2)
 		asteroid.SIZE = SMALL
-		asteroid.SPEED = 600 * speed_randomizer
+		asteroid.SPEED = 600 * speed_randomizer * globals.SPEED_SCALE
 		asteroid.HEALTH = 2
 		asteroid.CHILDREN_COUNT = 3
-		asteroid.ROTATION = randf_range(2, 2)
+		asteroid.ROTATION = randf_range(2, 2) * globals.SPEED_SCALE
 		asteroid.DAMAGE = 10
 	elif (size == MEDIUM):
 		asteroid.scale = Vector2(0.4, 0.4)
 		asteroid.SIZE = MEDIUM
-		asteroid.SPEED = 450 * speed_randomizer
+		asteroid.SPEED = 450 * speed_randomizer * globals.SPEED_SCALE
 		asteroid.HEALTH = 3
 		asteroid.CHILDREN_COUNT = 3
-		asteroid.ROTATION = randf_range(-1, 1)
+		asteroid.ROTATION = randf_range(-1, 1) * globals.SPEED_SCALE
 		asteroid.DAMAGE = 20
 	else: 
 		asteroid.scale = Vector2(0.6, 0.6)
 		asteroid.SIZE = LARGE
-		asteroid.SPEED = 300 * speed_randomizer
+		asteroid.SPEED = 300 * speed_randomizer * globals.SPEED_SCALE
 		asteroid.HEALTH = 5
 		asteroid.CHILDREN_COUNT = 2
-		asteroid.ROTATION = randf_range(-0.3, 0.3)
+		asteroid.ROTATION = randf_range(-0.3, 0.3) * globals.SPEED_SCALE
 		asteroid.DAMAGE = 30
 	asteroid.DIRECTION = direction
 	return asteroid
@@ -86,7 +86,7 @@ func spawn_children():
 			get_parent().add_child(child)
 		else:
 			var y_delta = 0.4 + abs(ROTATION) * 0.25
-			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-y_delta, y_delta)))
+			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-y_delta, y_delta)), GLOBALS)
 			child.position = position
 			get_parent().add_child(child)
 

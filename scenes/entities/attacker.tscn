@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b840hdwe2vju6" path="res://scenes/textures/Main Ship - Base - Slight damage.png" id="4_whcq6"]
 [ext_resource type="Texture2D" uid="uid://b2chh23emhuwu" path="res://scenes/textures/Main Ship - Base - Damaged.png" id="5_x7vmg"]
 [ext_resource type="Texture2D" uid="uid://cbk2t6xxntmk8" path="res://scenes/textures/Main Ship - Base - Very damaged.png" id="6_7dtbf"]
-[ext_resource type="PackedScene" uid="uid://pra3mls2eebx" path="res://scenes/entities/shield.tscn" id="8_fbkni"]
+[ext_resource type="PackedScene" uid="uid://5po700lnixfo" path="res://scenes/entities/shield.tscn" id="8_fbkni"]
 [ext_resource type="Texture2D" uid="uid://cq2kg4c74i5n0" path="res://scenes/textures/06.png" id="9_hxwoy"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08lvl"]
