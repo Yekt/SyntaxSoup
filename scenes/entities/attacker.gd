@@ -6,7 +6,8 @@ const PROJECTILE = preload("res://scenes/entities/projectile.tscn")
 
 var MOVEMENT_SPEED = 500
 var ATTACK_SPEED = 0.25
-var HIT_POINTS = 100
+var MAX_HEALTH = 100
+var HIT_POINTS = MAX_HEALTH
 var HP_REGEN_PER_S = 1
 var SHIELD = 100
 var SHIELD_REGEN_PER_S = 10
@@ -20,6 +21,7 @@ func hit(damage):
 		return
 
 	HIT_POINTS -= damage
+	$ShipSprite.frame = 3 - floor((HIT_POINTS / MAX_HEALTH) * 4)
 	IMMUNITY_TIMER = 0
 
 	if HIT_POINTS <= 0:
