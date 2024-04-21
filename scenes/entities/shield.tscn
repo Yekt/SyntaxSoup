@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://baq70ew6k7dow"]
+[gd_scene load_steps=23 format=3 uid="uid://pra3mls2eebx"]
 
 [ext_resource type="Script" path="res://scenes/scripts/shield.gd" id="1_k3w1v"]
 [ext_resource type="Shader" path="res://scenes/shaders/shield.gdshader" id="1_vy5so"]
-[ext_resource type="Texture2D" uid="uid://dewmn6h1vdgwh" path="res://scenes/textures/Main Ship - Shields - Round Shield.png" id="2_vjyv5"]
+[ext_resource type="Texture2D" uid="uid://dsf46yryydtxb" path="res://scenes/textures/Main Ship - Shields - Round Shield.png" id="2_vjyv5"]
 [ext_resource type="Shader" path="res://scenes/shaders/shield_burst.gdshader" id="4_keuh5"]
 [ext_resource type="Texture2D" uid="uid://dc6bc1hs54vs0" path="res://icon.svg" id="5_uajt8"]
 [ext_resource type="AudioStream" uid="uid://cpmdejq26rpwo" path="res://scenes/sounds/Retro Electronic Burst 05.wav" id="6_vs2pn"]
