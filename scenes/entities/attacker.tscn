@@ -1,9 +1,12 @@
-[gd_scene load_steps=20 format=3 uid="uid://dispcdksyboha"]
+[gd_scene load_steps=24 format=3 uid="uid://dispcdksyboha"]
 
 [ext_resource type="Script" path="res://scenes/entities/attacker.gd" id="1_5n3m0"]
 [ext_resource type="Texture2D" uid="uid://dsvog4sdetuq3" path="res://scenes/textures/Engine.png" id="2_i4ypy"]
-[ext_resource type="Texture2D" uid="uid://d1e1fb08jt4fb" path="res://scenes/textures/Ship.png" id="3_g2t45"]
+[ext_resource type="Texture2D" uid="uid://ytd1a3nmvxao" path="res://scenes/textures/Main Ship - Base - Full health.png" id="3_bjjv0"]
 [ext_resource type="Texture2D" uid="uid://dgr7b06nbc6cx" path="res://scenes/textures/Autocannon.png" id="4_46an0"]
+[ext_resource type="Texture2D" uid="uid://b840hdwe2vju6" path="res://scenes/textures/Main Ship - Base - Slight damage.png" id="4_whcq6"]
+[ext_resource type="Texture2D" uid="uid://b2chh23emhuwu" path="res://scenes/textures/Main Ship - Base - Damaged.png" id="5_x7vmg"]
+[ext_resource type="Texture2D" uid="uid://cbk2t6xxntmk8" path="res://scenes/textures/Main Ship - Base - Very damaged.png" id="6_7dtbf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_08lvl"]
 radius = 20.0
@@ -61,6 +64,26 @@ animations = [{
 "loop": true,
 "name": &"running",
 "speed": 20.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5y8tr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_bjjv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_whcq6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x7vmg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_7dtbf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yf0qs"]
@@ -147,9 +170,9 @@ texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_ewujq")
 animation = &"running"
 
-[node name="ShipSprite" type="Sprite2D" parent="."]
+[node name="ShipSprite" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("3_g2t45")
+sprite_frames = SubResource("SpriteFrames_5y8tr")
 
 [node name="GunAnimation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1

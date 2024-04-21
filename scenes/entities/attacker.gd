@@ -10,7 +10,7 @@ func _ready():
 
 func _physics_process(delta):
 	super._physics_process(delta)
-	$ShipSprite.frame = 3 - floor((health / max_health) * 4)
+	$ShipSprite.frame = 3 - floor((float(health) / float(max_health + 1)) * 4)
 
 func get_input_direction():
 	return Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
