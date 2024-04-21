@@ -29,3 +29,6 @@ func get_input_direction():
 
 func get_dodge_input():
 	return Input.is_action_pressed("supporter_dodge")
+
+func update_values():
+	magnet_strength = globals.MAGNET_LEVEL
