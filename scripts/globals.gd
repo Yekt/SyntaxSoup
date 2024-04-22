@@ -23,6 +23,9 @@ var MAGNET_LEVEL = 1
 var LEVEL = 6
 
 
+const ASTEROID = preload("res://entities/asteroid.tscn")
+
+
 func add_score(delta: int):
 	SCORE += delta
 	SPEED_SCALE = 1.0 + (float(SCORE) / SCORE_DOUBLED_SPEED)

@@ -21,13 +21,9 @@ var velocity
 
 
 static func create_asteroid(size: int, direction: Vector2, globals) -> Asteroid:
-	# TODO calling load on every spawn is inefficient
-	# however calling preload() leads to recursive import which the editor doesn't like ("corrupt file")
-	# consider storing a reference to asteroid.tscn in global game state
-	var ASTEROID = load("res://entities/asteroid.tscn")
 	direction = direction.normalized()
 	var speed_randomizer = randf_range(0.8, 1.2)
-	var asteroid = ASTEROID.instantiate()
+	var asteroid = globals.ASTEROID.instantiate()
 	if (size <= SMALL):
 		asteroid.scale = Vector2(0.2, 0.2)
 		asteroid.SIZE = SMALL
