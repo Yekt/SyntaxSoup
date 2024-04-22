@@ -14,12 +14,12 @@ func _ready():
 
 func restart_game():
 	GLOBALS.reset()
-	get_tree().change_scene_to_file("res://screens/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 
 func start_menu():
 	GLOBALS.reset()
-	get_tree().change_scene_to_file("res://screens/start.tscn")
+	get_tree().change_scene_to_file("res://scenes/start.tscn")
 
 func get_player_name():
 	if %NameInput.text:
