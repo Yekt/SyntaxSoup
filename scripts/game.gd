@@ -1,9 +1,10 @@
-# resolution scaling: https://www.youtube.com/watch?v=blPqie3Z_F0
-
 extends Node2D
 
 
 var GLOBALS
+
+
+const BASE_SPAWN_RATE = 1.5
 
 
 func _ready():
@@ -12,7 +13,7 @@ func _ready():
 
 
 func _process(delta):
-	%SpawnTimer.wait_time = 2.0 * (1.0 / 1 - (0.5 * (float(GLOBALS.SCORE+1) / GLOBALS.SCORE_DOUBLED_SPEED)))
+	%SpawnTimer.wait_time = BASE_SPAWN_RATE * pow(2.0, -4.0 * (float(GLOBALS.SCORE) / GLOBALS.SCORE_DOUBLED_SPEED))
 	
 	
 func spawn_asteroid():
@@ -32,4 +33,3 @@ func spawn_asteroid():
 func show_upgrades():
 	if GLOBALS.LEVEL < GLOBALS.MAX_LEVELS:
 		%Upgrades.display_upgrades()
-	

@@ -39,7 +39,6 @@ func _physics_process(delta):
 			var to_resource = (position - other.position).normalized()
 			dir = (dir + to_resource * delta).normalized()
 			other.velocity = dir * speed
-			print(other.name)
 
 func get_input_direction():
 	return Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
@@ -50,6 +49,5 @@ func get_dodge_input():
 func update_values():
 	$MagnetArea.scale = Vector2(1.0 + 0.5 * globals.MAGNET_LEVEL, 1.0 + 0.5 * globals.MAGNET_LEVEL)
 	$Shield.max_shield = 100 * globals.SHIELD_CAPACITY_LEVEL
-	$Shield.shield_regen = 20 * globals.SHIELD_RECHARGE_LEVEL
 	$Shield.burst_strength = 10 + globals.BURST_LEVEL * 2
 	

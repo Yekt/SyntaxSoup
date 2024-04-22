@@ -1,14 +1,18 @@
 extends Ship
 
+
 const PROJECTILE = preload("res://entities/projectile.tscn")
 
-var damage = 1
+
+var damage = 2
 var blaster = true
 var globals
+
 
 func _ready():
 	globals = get_node("/root/Globals")
 	update_values()
+
 
 func _physics_process(delta):
 	update_values()
@@ -26,11 +30,14 @@ func _physics_process(delta):
 	if Input.is_action_pressed("attacker_shield_burst") and $Shield.burst_timer > 5:
 		$Shield.burst()
 
+
 func get_input_direction():
 	return Input.get_vector("attacker_left", "attacker_right", "attacker_up", "attacker_down")
 
+
 func get_dodge_input():
 	return Input.is_action_pressed("attacker_dodge")
+
 
 func shoot():
 	var projectile = PROJECTILE.instantiate()
@@ -43,11 +50,11 @@ func shoot():
 		projectile.DAMAGE = damage
 		%Blaster2.add_child(projectile)
 	blaster = !blaster
-	
+
+
 func update_values():
-	%AttackTimer.wait_time = 0.25 / globals.BLASTER_SPEED_LEVEL
-	damage = globals.BLASTER_DAMAGE_LEVEL
+	%AttackTimer.wait_time = 1.0 / float(1.0 + globals.BLASTER_SPEED_LEVEL)
+	damage = 1 + globals.BLASTER_DAMAGE_LEVEL
 	$Shield.max_shield = 100 * globals.SHIELD_CAPACITY_LEVEL
-	$Shield.shield_regen = 20 * globals.SHIELD_RECHARGE_LEVEL
 	$Shield.burst_strength = 10 + globals.BURST_LEVEL * 2
 	
