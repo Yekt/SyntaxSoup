@@ -5,6 +5,7 @@ var GLOBALS
 
 
 const BURST_COST = 50
+const BURST_DURATION = 0.5
 
 
 var max_shield = 100
@@ -23,14 +24,13 @@ func _ready():
 func _process(delta):
 	burst_timer += delta
 
-	if burst_timer >= 1:
+	if burst_timer >= BURST_DURATION:
 		is_bursting = false
-		scale = Vector2(1, 1)
+		$CollisionShape.scale = Vector2(1, 1)
 	elif is_bursting:
-		get_child(2).material.set_shader_parameter("time", burst_timer)
-		scale = Vector2(2, 2) * burst_timer * (1.0 + GLOBALS.BURST_LEVEL)
-
-	get_child(2).visible = is_bursting
+		var scale = burst_timer * 4.0 * GLOBALS.BURST_LEVEL
+		$BurstSprite.material.set_shader_parameter("scale", scale + 0.5)
+		$CollisionShape.scale = Vector2(1, 1) * (scale + 1.0)
 
 	for other in get_overlapping_areas():
 		if is_bursting:
@@ -41,7 +41,8 @@ func _process(delta):
 		if energy <= 0:
 			cooldown_timer = 0
 
-	get_child(1).visible = energy > 0 and not is_bursting
+	$ShieldSprite.visible = energy > 0 and not is_bursting
+	$BurstSprite.visible = is_bursting
 
 	if energy <= 0:
 		cooldown_timer += delta

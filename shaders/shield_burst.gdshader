@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform float time;
+uniform float scale;
 
 vec2 random(vec2 uv){
     uv = vec2( dot(uv, vec2(127.1,311.7) ),
@@ -20,24 +20,29 @@ float noise(vec2 uv) {
                      dot( random(uv_index + vec2(1.0,1.0) ), uv_fract - vec2(1.0,1.0) ), blur.x), blur.y) + 0.5;
 }
 
+float fractal_noise(vec2 p, int layers) {
+	float r = 0.0;
+	float s = 1.0;
+	for (int i = 0; i < layers; i++) {
+		r += noise(p) * s;
+		p *= 2.0;
+		s /= 2.0;
+	}
+	return r - 0.5;
+}
+
 void vertex() {
 	// Called for every vertex the material is visible on.
 }
 
 void fragment() {
 	vec2 pos = (UV - 0.5) * 2.0;
-	float pixel_scale = 4000.0 * time;
-	pos = round(pos * pixel_scale) / pixel_scale;
-	
-	float min_radius = time / 5.0;
-	float max_radius = min_radius + 0.005;
-
-	float d = length(pos);
-	if (d > max_radius || d < min_radius) {
-		discard;
-	}
-
-	COLOR = vec4(0.6, 1.0, 0.9, 1) * smoothstep(min_radius, max_radius, d + random(pos).x * 0.03);
+	pos = round(pos * 500.0) / 500.0;
+	float radius = 0.04 * scale - 0.002;
+	float d = length(pos) - radius;
+	float brightness = smoothstep(0.02, 0.0, abs(d)) * fractal_noise(pos * 100.0, 4);
+	brightness += fract(smoothstep(0.0019, 0.021, d));
+	COLOR = vec4(0.6, 1.0, 0.9, 1) * brightness;
 }
 
 //void light() {
