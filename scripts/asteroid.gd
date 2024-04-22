@@ -104,8 +104,10 @@ func destroy():
 	if IS_DESTROYED:
 		return
 	IS_DESTROYED = true
+	DAMAGE = 0
 	set_collision_layer_value(4, false)
 	set_collision_layer_value(6, false)
+	set_collision_mask_value(3, false)
 	$Sprite.play("default")
 	$AudioStreamPlayer2D.play()
 
