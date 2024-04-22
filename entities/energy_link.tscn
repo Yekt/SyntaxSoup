@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b74kagthgw8vw"]
+
+[ext_resource type="Shader" path="res://shaders/energy_link.gdshader" id="1_k6fam"]
+[ext_resource type="Texture2D" uid="uid://dc6bc1hs54vs0" path="res://textures/icon.svg" id="2_5o6jn"]
+[ext_resource type="Script" path="res://scripts/energy_link.gd" id="2_gs623"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1undn"]
+shader = ExtResource("1_k6fam")
+shader_parameter/time = null
+shader_parameter/brightness = null
+shader_parameter/begin = null
+shader_parameter/end = null
+
+[node name="EnergyLink" type="Sprite2D"]
+material = SubResource("ShaderMaterial_1undn")
+texture = ExtResource("2_5o6jn")
+script = ExtResource("2_gs623")
