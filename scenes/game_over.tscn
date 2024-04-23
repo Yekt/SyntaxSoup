@@ -61,8 +61,54 @@ text = "0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Top5World" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Rank1" type="Label" parent="VBoxContainer/Top5World"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="Rank2" type="Label" parent="VBoxContainer/Top5World"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="Rank3" type="Label" parent="VBoxContainer/Top5World"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="Rank4" type="Label" parent="VBoxContainer/Top5World"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
+[node name="Rank5" type="Label" parent="VBoxContainer/Top5World"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+
 [node name="ActionsContainer" type="VBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
+
+[node name="NameInput" type="LineEdit" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+placeholder_text = "Enter name.."
+
+[node name="PublishScoreButton" type="Button" parent="VBoxContainer/ActionsContainer"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
+theme_override_font_sizes/font_size = 46
+theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
+text = "Publish my Score"
+flat = true
 
 [node name="RestartButton" type="Button" parent="VBoxContainer/ActionsContainer"]
 unique_name_in_owner = true
@@ -82,61 +128,6 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
 text = "Exit"
 flat = true
 
-[node name="ScoreContainer2" type="VBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-
-[node name="krankerName" type="VBoxContainer" parent="VBoxContainer/ScoreContainer2"]
-layout_mode = 2
-
-[node name="Rank1" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="Rank2" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="Rank3" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="Rank4" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="Rank5" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="NameInput" type="TextEdit" parent="VBoxContainer/ScoreContainer2"]
-unique_name_in_owner = true
-visible = false
-clip_contents = true
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 2
-theme_override_font_sizes/font_size = 36
-placeholder_text = "Enter name.."
-
-[node name="PublishScoreButton" type="Button" parent="VBoxContainer/ScoreContainer2"]
-unique_name_in_owner = true
-visible = false
-layout_mode = 2
-theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
-theme_override_font_sizes/font_size = 46
-theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
-text = "Publish my Score"
-flat = true
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_35y7a")
 autoplay = true
@@ -144,6 +135,6 @@ autoplay = true
 [node name="HighScoreRequest" type="HTTPRequest" parent="."]
 unique_name_in_owner = true
 
+[connection signal="pressed" from="VBoxContainer/ActionsContainer/PublishScoreButton" to="." method="publish_score"]
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/RestartButton" to="." method="restart_game"]
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/StartMenuButton" to="." method="start_menu"]
-[connection signal="pressed" from="VBoxContainer/ScoreContainer2/PublishScoreButton" to="." method="publish_score"]
