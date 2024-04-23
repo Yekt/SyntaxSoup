@@ -107,7 +107,7 @@ animations = [{
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bh312"]
 shader = ExtResource("4_keuh5")
-shader_parameter/time = null
+shader_parameter/scale = null
 
 [node name="Shield" type="Area2D"]
 collision_layer = 0
@@ -126,7 +126,7 @@ autoplay = "default"
 
 [node name="BurstSprite" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_bh312")
-scale = Vector2(5, 5)
+scale = Vector2(10, 10)
 texture = ExtResource("5_uajt8")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

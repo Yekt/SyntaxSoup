@@ -2,11 +2,12 @@ extends Control
 
 
 var GLOBALS
-var url = "https://syntax-soup-default-rtdb.europe-west1.firebasedatabase.app/scores.json"
+const URL = "https://syntax-soup-default-rtdb.europe-west1.firebasedatabase.app/scores.json"
+
 
 func _ready():
 	%HighScoreRequest.request_completed.connect(_on_get_request_completed)
-	%HighScoreRequest.request(url + "/?orderBy=\"score\"&limitToLast=5")
+	%HighScoreRequest.request(URL + "/?orderBy=\"score\"&limitToLast=5")
 	GLOBALS = get_node("/root/Globals")
 	%Score.text = str(GLOBALS.SCORE)
 	%RestartButton.grab_focus()
@@ -21,6 +22,7 @@ func start_menu():
 	GLOBALS.reset()
 	get_tree().change_scene_to_file("res://scenes/start.tscn")
 
+
 func get_player_name():
 	if %NameInput.text:
 		return %NameInput.text
@@ -32,16 +34,20 @@ func get_player_name():
 	
 
 func publish_score():
+	%NameInput.visible = false
+	%PublishScoreButton.visible = false
 	%HighScoreRequest.request_completed.connect(_on_post_request_completed)
 	var json = JSON.stringify({"name": get_player_name(), "score":GLOBALS.SCORE})
 	var headers = ["Content-Type: application/json"]
-	%HighScoreRequest.request(url, headers, HTTPClient.METHOD_POST, json)
+	%HighScoreRequest.request(URL, headers, HTTPClient.METHOD_POST, json)
+
 
 func _on_post_request_completed(result, response_code, headers, body):
 	if response_code != 200:
 		print("Post nicht erfolgreich" + str(response_code))
 	else:
 		print("Post erfolgreich")
+
 
 func _on_get_request_completed(result, response_code, headers, body):
 	if response_code != 200:
@@ -55,11 +61,15 @@ func _on_get_request_completed(result, response_code, headers, body):
 	
 	score_list.sort_custom(sort_ascending)
 	print(score_list)
-	$VBoxContainer/ActionsContainer/krankerName/RichTextLabel.set_text(str(score_list[0][0]) + " - " + str(score_list[0][1]))
-	$VBoxContainer/ActionsContainer/krankerName/RichTextLabel2.set_text(str(score_list[1][0]) + " - " + str(score_list[1][1]))
-	$VBoxContainer/ActionsContainer/krankerName/RichTextLabel3.set_text(str(score_list[2][0]) + " - " + str(score_list[2][1]))
-	$VBoxContainer/ActionsContainer/krankerName/RichTextLabel4.set_text(str(score_list[3][0]) + " - " + str(score_list[3][1]))
-	$VBoxContainer/ActionsContainer/krankerName/RichTextLabel5.set_text(str(score_list[4][0]) + " - " + str(score_list[4][1]))
+	%Rank5.set_text(str(score_list[0][0]) + " - " + str(score_list[0][1]))
+	%Rank4.set_text(str(score_list[1][0]) + " - " + str(score_list[1][1]))
+	%Rank3.set_text(str(score_list[2][0]) + " - " + str(score_list[2][1]))
+	%Rank2.set_text(str(score_list[3][0]) + " - " + str(score_list[3][1]))
+	%Rank1.set_text(str(score_list[4][0]) + " - " + str(score_list[4][1]))
+	if GLOBALS.SCORE > score_list[0][1]:
+		%NameInput.visible = true
+		%PublishScoreButton.visible = true
+
 
 func sort_ascending(a, b):
 	if a[1] < b[1]:

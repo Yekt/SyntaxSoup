@@ -5,7 +5,6 @@ class_name Asteroid
 const LARGE = 2
 const MEDIUM = 1
 const SMALL = 0
-const ASTEROID = preload("res://entities/asteroid.tscn")
 const RESOURCE = preload("res://entities/resource.tscn")
 var GLOBALS
 
@@ -24,31 +23,31 @@ var velocity
 static func create_asteroid(size: int, direction: Vector2, globals) -> Asteroid:
 	direction = direction.normalized()
 	var speed_randomizer = randf_range(0.8, 1.2)
-	var asteroid = ASTEROID.instantiate()
+	var asteroid = globals.ASTEROID.instantiate()
 	if (size <= SMALL):
 		asteroid.scale = Vector2(0.2, 0.2)
 		asteroid.SIZE = SMALL
-		asteroid.SPEED = 600 * speed_randomizer * globals.SPEED_SCALE
-		asteroid.HEALTH = 2
-		asteroid.CHILDREN_COUNT = 3
+		asteroid.SPEED = 250 * speed_randomizer * globals.SPEED_SCALE
+		asteroid.HEALTH = 4
+		asteroid.CHILDREN_COUNT = randi_range(2,4)
 		asteroid.ROTATION = randf_range(2, 2) * globals.SPEED_SCALE
 		asteroid.DAMAGE = 10
 	elif (size == MEDIUM):
-		asteroid.scale = Vector2(0.4, 0.4)
+		asteroid.scale = Vector2(0.35, 0.35)
 		asteroid.SIZE = MEDIUM
-		asteroid.SPEED = 450 * speed_randomizer * globals.SPEED_SCALE
-		asteroid.HEALTH = 3
+		asteroid.SPEED = 175 * speed_randomizer * globals.SPEED_SCALE
+		asteroid.HEALTH = 6
 		asteroid.CHILDREN_COUNT = 3
 		asteroid.ROTATION = randf_range(-1, 1) * globals.SPEED_SCALE
 		asteroid.DAMAGE = 20
 	else: 
-		asteroid.scale = Vector2(0.6, 0.6)
+		asteroid.scale = Vector2(0.5, 0.5)
 		asteroid.SIZE = LARGE
-		asteroid.SPEED = 300 * speed_randomizer * globals.SPEED_SCALE
-		asteroid.HEALTH = 5
+		asteroid.SPEED = 100 * speed_randomizer * globals.SPEED_SCALE
+		asteroid.HEALTH = 12
 		asteroid.CHILDREN_COUNT = 2
 		asteroid.ROTATION = randf_range(-0.3, 0.3) * globals.SPEED_SCALE
-		asteroid.DAMAGE = 30
+		asteroid.DAMAGE = 40
 	asteroid.DIRECTION = direction
 	return asteroid
 
@@ -62,29 +61,27 @@ func _ready():
 func _process(delta):
 	position += velocity * delta
 	rotate(ROTATION * delta)
-
 	if IS_DESTROYED:
-		if !$Sprite.is_playing():
-			queue_free()
-		return
-
+		if $Sprite.is_playing():
+			return
+		queue_free()
 	for b in get_overlapping_bodies():
 		if b.is_dodgeing():
 			continue
-
 		b.hit(DAMAGE)
 		self.destroy()
 		break
 
 
 func spawn_children():
-	for i in CHILDREN_COUNT:
-		if SIZE == SMALL:
+	if SIZE <= SMALL:
+		for i in CHILDREN_COUNT:
 			var child = RESOURCE.instantiate()
 			child.position = position
 			child.velocity = randf_range(0.8, 1.2) * (velocity + Vector2(0, randf_range(-100, 100)))
 			get_parent().add_child(child)
-		else:
+	else:
+		for i in CHILDREN_COUNT:
 			var y_delta = 0.4 + abs(ROTATION) * 0.25
 			var child = Asteroid.create_asteroid(SIZE-1, Vector2.RIGHT + Vector2(0, randf_range(-y_delta, y_delta)), GLOBALS)
 			child.position = position
@@ -94,22 +91,28 @@ func spawn_children():
 func hit(damage):
 	if IS_DESTROYED:
 		return
-
 	HEALTH -= damage
 	if HEALTH <= 0:
-		self.destroy()
+		self.destroy_and_spawn()
 
 
 func destroy():
 	if IS_DESTROYED:
 		return
-
-	spawn_children()
 	IS_DESTROYED = true
+	DAMAGE = 0
 	set_collision_layer_value(4, false)
 	set_collision_layer_value(6, false)
+	set_collision_mask_value(3, false)
 	$Sprite.play("default")
 	$AudioStreamPlayer2D.play()
+
+
+func destroy_and_spawn():
+	if IS_DESTROYED:
+		return
+	destroy()
+	spawn_children()
 
 
 func on_screen_exited():

@@ -250,7 +250,7 @@ position = Vector2(9, -8)
 
 [node name="AttackTimer" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.5
 autostart = true
 
 [node name="EngineAnimation" type="AnimatedSprite2D" parent="."]

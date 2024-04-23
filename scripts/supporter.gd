@@ -25,8 +25,8 @@ func _physics_process(delta):
 		$AudioStreamPlayer2D.play()
 		$"/root/Game/EnergyLink".brightness = 2.0
 
-		$"/root/Game/Attacker/Shield".energy += globals.SHIELD_RECHARGE_LEVEL
-		$Shield.energy += globals.SHIELD_RECHARGE_LEVEL
+		$"/root/Game/Attacker/Shield".energy += 2 * globals.SHIELD_RECHARGE_LEVEL
+		$Shield.energy += 2 * globals.SHIELD_RECHARGE_LEVEL
 		
 	if globals.SCORE >= globals.LAST_UPGRADE + globals.SCORE_SHOW_UPGRADE:
 		show_upgrades.emit()
@@ -39,7 +39,6 @@ func _physics_process(delta):
 			var to_resource = (position - other.position).normalized()
 			dir = (dir + to_resource * delta).normalized()
 			other.velocity = dir * speed
-			print(other.name)
 
 func get_input_direction():
 	return Input.get_vector("supporter_left", "supporter_right", "supporter_up", "supporter_down")
@@ -50,6 +49,5 @@ func get_dodge_input():
 func update_values():
 	$MagnetArea.scale = Vector2(1.0 + 0.5 * globals.MAGNET_LEVEL, 1.0 + 0.5 * globals.MAGNET_LEVEL)
 	$Shield.max_shield = 100 * globals.SHIELD_CAPACITY_LEVEL
-	$Shield.shield_regen = 20 * globals.SHIELD_RECHARGE_LEVEL
 	$Shield.burst_strength = 10 + globals.BURST_LEVEL * 2
 	
