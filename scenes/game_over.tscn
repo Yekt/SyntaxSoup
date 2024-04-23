@@ -82,49 +82,60 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
 text = "Exit"
 flat = true
 
-[node name="NameInput" type="TextEdit" parent="VBoxContainer/ActionsContainer"]
+[node name="ScoreContainer2" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="krankerName" type="VBoxContainer" parent="VBoxContainer/ScoreContainer2"]
+layout_mode = 2
+
+[node name="Rank1" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
 unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="Rank2" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="Rank3" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="Rank4" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="Rank5" type="RichTextLabel" parent="VBoxContainer/ScoreContainer2/krankerName"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 40
+fit_content = true
+
+[node name="NameInput" type="TextEdit" parent="VBoxContainer/ScoreContainer2"]
+unique_name_in_owner = true
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
+theme_override_font_sizes/font_size = 36
 placeholder_text = "Enter name.."
 
-[node name="PublishScoreButton" type="Button" parent="VBoxContainer/ActionsContainer"]
+[node name="PublishScoreButton" type="Button" parent="VBoxContainer/ScoreContainer2"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.481789, 0.481789, 0.481789, 1)
 theme_override_font_sizes/font_size = 46
 theme_override_styles/focus = SubResource("StyleBoxEmpty_050d5")
 text = "Publish my Score"
 flat = true
-
-[node name="krankerName" type="VBoxContainer" parent="VBoxContainer/ActionsContainer"]
-layout_mode = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="RichTextLabel2" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="RichTextLabel4" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
-
-[node name="RichTextLabel5" type="RichTextLabel" parent="VBoxContainer/ActionsContainer/krankerName"]
-layout_mode = 2
-theme_override_font_sizes/normal_font_size = 40
-fit_content = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_35y7a")
@@ -135,4 +146,4 @@ unique_name_in_owner = true
 
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/RestartButton" to="." method="restart_game"]
 [connection signal="pressed" from="VBoxContainer/ActionsContainer/StartMenuButton" to="." method="start_menu"]
-[connection signal="pressed" from="VBoxContainer/ActionsContainer/PublishScoreButton" to="." method="publish_score"]
+[connection signal="pressed" from="VBoxContainer/ScoreContainer2/PublishScoreButton" to="." method="publish_score"]
