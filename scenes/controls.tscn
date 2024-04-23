@@ -14,10 +14,10 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 357.0
-offset_top = 205.0
-offset_right = 1735.0
-offset_bottom = 893.0
+offset_left = 364.0
+offset_top = 240.0
+offset_right = 1742.0
+offset_bottom = 928.0
 grow_horizontal = 2
 theme_override_constants/separation = 345
 
