@@ -1,0 +1,170 @@
+[gd_scene load_steps=2 format=3 uid="uid://fbpn5g8466jo"]
+
+[ext_resource type="Theme" uid="uid://bwvkxk7ybstes" path="res://theme/theme.tres" id="1_ubcnj"]
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_ubcnj")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 357.0
+offset_top = 205.0
+offset_right = 1735.0
+offset_bottom = 893.0
+grow_horizontal = 2
+theme_override_constants/separation = 345
+
+[node name="KeyboardContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="HBoxContainer/KeyboardContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = " Keyboard "
+horizontal_alignment = 1
+
+[node name="Attacker" type="VBoxContainer" parent="HBoxContainer/KeyboardContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/KeyboardContainer/Attacker"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Attacker"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/KeyboardContainer/Attacker"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Movement" type="RichTextLabel" parent="HBoxContainer/KeyboardContainer/Attacker/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Movement:		WASD"
+fit_content = true
+
+[node name="Dodge" type="RichTextLabel" parent="HBoxContainer/KeyboardContainer/Attacker/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Dodge:				left Shift"
+fit_content = true
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/KeyboardContainer/Attacker/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Shield-Burst:		Spacebar"
+fit_content = true
+
+[node name="Supporter" type="VBoxContainer" parent="HBoxContainer/KeyboardContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/KeyboardContainer/Supporter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Supporter"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/KeyboardContainer/Supporter"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Movement" type="RichTextLabel" parent="HBoxContainer/KeyboardContainer/Supporter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Movement:		Arrow Keys"
+fit_content = true
+
+[node name="Dodge" type="RichTextLabel" parent="HBoxContainer/KeyboardContainer/Supporter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Dodge:				right Ctrl"
+fit_content = true
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/KeyboardContainer/Supporter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Magnet:			right Shift"
+fit_content = true
+
+[node name="GamepadContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="Label" type="Label" parent="HBoxContainer/GamepadContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "  Gamepad  "
+horizontal_alignment = 1
+
+[node name="Attacker" type="VBoxContainer" parent="HBoxContainer/GamepadContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/GamepadContainer/Attacker"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Attacker"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/GamepadContainer/Attacker"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Movement" type="RichTextLabel" parent="HBoxContainer/GamepadContainer/Attacker/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Movement:		left Stick"
+fit_content = true
+
+[node name="Dodge" type="RichTextLabel" parent="HBoxContainer/GamepadContainer/Attacker/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Dodge:				left Bumper"
+fit_content = true
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/GamepadContainer/Attacker/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Shield-Burst:		left Trigger"
+fit_content = true
+
+[node name="Supporter" type="VBoxContainer" parent="HBoxContainer/GamepadContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="Label" type="Label" parent="HBoxContainer/GamepadContainer/Supporter"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 48
+text = "Supporter"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/GamepadContainer/Supporter"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Movement" type="RichTextLabel" parent="HBoxContainer/GamepadContainer/Supporter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Movement:		right Stick"
+fit_content = true
+
+[node name="Dodge" type="RichTextLabel" parent="HBoxContainer/GamepadContainer/Supporter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Dodge:				right Bumper"
+fit_content = true
+
+[node name="Ability" type="RichTextLabel" parent="HBoxContainer/GamepadContainer/Supporter/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Magnet:			right Trigger"
+fit_content = true

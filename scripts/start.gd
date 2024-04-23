@@ -25,12 +25,18 @@ func _process(delta):
 
 
 func start_game():
+	if %Controls.visible:
+		toggle_controls()
+		return
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
-	
 
-func show_controls():
-	print("This does nothing for now!")
-	
+
+func toggle_controls():
+	%Controls.visible = !%Controls.visible
+
 
 func exit_game():
+	if %Controls.visible:
+		toggle_controls()
+		return
 	get_tree().quit()

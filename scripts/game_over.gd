@@ -34,6 +34,7 @@ func get_player_name():
 	
 
 func publish_score():
+	%RestartButton.grab_focus()
 	%NameInput.visible = false
 	%PublishScoreButton.visible = false
 	%HighScoreRequest.request_completed.connect(_on_post_request_completed)
@@ -50,6 +51,7 @@ func _on_post_request_completed(result, response_code, headers, body):
 
 
 func _on_get_request_completed(result, response_code, headers, body):
+	%HighScoreRequest.request_completed.disconnect(_on_get_request_completed)
 	if response_code != 200:
 		return
 	
@@ -61,11 +63,11 @@ func _on_get_request_completed(result, response_code, headers, body):
 	
 	score_list.sort_custom(sort_ascending)
 	print(score_list)
-	%Rank5.set_text(str(score_list[0][0]) + " - " + str(score_list[0][1]))
-	%Rank4.set_text(str(score_list[1][0]) + " - " + str(score_list[1][1]))
-	%Rank3.set_text(str(score_list[2][0]) + " - " + str(score_list[2][1]))
-	%Rank2.set_text(str(score_list[3][0]) + " - " + str(score_list[3][1]))
-	%Rank1.set_text(str(score_list[4][0]) + " - " + str(score_list[4][1]))
+	%Rank5.set_text(str(score_list[0][1]) + " - " + str(score_list[0][0]))
+	%Rank4.set_text(str(score_list[1][1]) + " - " + str(score_list[1][0]))
+	%Rank3.set_text(str(score_list[2][1]) + " - " + str(score_list[2][0]))
+	%Rank2.set_text(str(score_list[3][1]) + " - " + str(score_list[3][0]))
+	%Rank1.set_text(str(score_list[4][1]) + " - " + str(score_list[4][0]))
 	if GLOBALS.SCORE > score_list[0][1]:
 		%NameInput.visible = true
 		%PublishScoreButton.visible = true
